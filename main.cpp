@@ -1,6 +1,36 @@
+#include <QApplication>
+#include <QDebug>
+
 #include <iostream>
 
-int main(int argc, char **argv) {
-    std::cout << "Hello, world!" << std::endl;
-    return 0;
+#include <3dview.h>
+#include <commandline.h>
+#include <imageview.h>
+#include <infoview.h>
+#include <window.h>
+
+int main(int argc, char **argv)
+{
+	QApplication app(argc, argv);
+
+	CommandLine parser(app);
+	const QStringList imageNames = parser.GetImageNames();
+
+	ImageView *imageViews[ImageViewType::MAX];
+	for (unsigned short i = 0; i < ImageViewType::MAX; ++i) {
+		const QString &name = imageNames[i];
+
+		imageViews[i] = new ImageView(name);
+	}
+
+	View3D view3D(imageNames);
+	InfoView infoView;
+
+	Window window(&view3D, &infoView, imageViews);
+
+	app.exec();
+
+	for (unsigned short i = 0; i < ImageViewType::MAX; ++i) {
+		delete imageViews[i];
+	}
 }
