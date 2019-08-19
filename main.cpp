@@ -7,10 +7,13 @@
 #include <commandline.h>
 #include <imageview.h>
 #include <infoview.h>
+#include <pinning.h>
 #include <window.h>
 
 int main(int argc, char **argv)
 {
+	Pinning pinning;
+
 	QApplication app(argc, argv);
 
 	CommandLine parser(app);
@@ -20,13 +23,13 @@ int main(int argc, char **argv)
 	for (unsigned short i = 0; i < ImageViewType::MAX; ++i) {
 		const QString &name = imageNames[i];
 
-		imageViews[i] = new ImageView(name);
+		imageViews[i] = new ImageView(name, (ImageViewType::Type)i, pinning);
 	}
 
-	View3D view3D(imageNames);
-	InfoView infoView;
+	View3D *view3D = new View3D(imageNames);
+	InfoView *infoView = new InfoView();
 
-	Window window(&view3D, &infoView, imageViews);
+	Window window(view3D, infoView, imageViews, pinning);
 
 	app.exec();
 

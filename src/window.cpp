@@ -1,10 +1,20 @@
 #include <QGridLayout>
+#include <QKeyEvent>
 
-#include <imageview.h>
 #include <3dview.h>
+#include <imageview.h>
+#include <pinning.h>
 #include <window.h>
 
-Window::Window(View3D *view3D, InfoView *infoView, ImageView *views[ImageViewType::MAX])
+void Window::keyPressEvent(QKeyEvent *event)
+{
+	if (event->key() == Qt::Key_N) {
+		m_pinning.newIntersectionTask();
+	}
+}
+
+Window::Window(View3D *view3D, InfoView *infoView, ImageView *views[ImageViewType::MAX], Pinning &pinning)
+	:m_pinning(pinning)
 {
 	QGridLayout *layout = new QGridLayout();
 

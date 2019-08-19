@@ -7,6 +7,7 @@ CMakeFiles/blueprintcalc.dir/main.cpp.o
  ../include/enums.h
  ../include/imageview.h
  ../include/infoview.h
+ ../include/pinning.h
  ../include/window.h
  /home/tristan/Compilation/blueprintcalc/main.cpp
  /usr/include/qt5/Gentoo/gentoo-qconfig.h
@@ -20,6 +21,7 @@ CMakeFiles/blueprintcalc.dir/main.cpp.o
  /usr/include/qt5/QtCore/QEvent
  /usr/include/qt5/QtCore/QMargins
  /usr/include/qt5/QtCore/QObject
+ /usr/include/qt5/QtCore/QPointF
  /usr/include/qt5/QtCore/QRect
  /usr/include/qt5/QtCore/qalgorithms.h
  /usr/include/qt5/QtCore/qarraydata.h
@@ -327,6 +329,7 @@ CMakeFiles/blueprintcalc.dir/src/commandline.cpp.o
  /home/tristan/Compilation/blueprintcalc/src/commandline.cpp
  /usr/include/qt5/Gentoo/gentoo-qconfig.h
  /usr/include/qt5/QtCore/QCommandLineParser
+ /usr/include/qt5/QtCore/QDebug
  /usr/include/qt5/QtCore/qalgorithms.h
  /usr/include/qt5/QtCore/qarraydata.h
  /usr/include/qt5/QtCore/qatomic.h
@@ -439,9 +442,13 @@ CMakeFiles/blueprintcalc.dir/src/commandline.cpp.o
  /usr/include/qt5/QtWidgets/qtwidgetsglobal.h
  /usr/include/qt5/QtWidgets/qwidget.h
 CMakeFiles/blueprintcalc.dir/src/imageview.cpp.o
+ ../include/enums.h
  ../include/imageview.h
+ ../include/pinning.h
  /home/tristan/Compilation/blueprintcalc/src/imageview.cpp
  /usr/include/qt5/Gentoo/gentoo-qconfig.h
+ /usr/include/qt5/QtCore/QDebug
+ /usr/include/qt5/QtCore/QPointF
  /usr/include/qt5/QtCore/qalgorithms.h
  /usr/include/qt5/QtCore/qarraydata.h
  /usr/include/qt5/QtCore/qatomic.h
@@ -563,34 +570,76 @@ CMakeFiles/blueprintcalc.dir/src/pinning.cpp.o
  ../include/pinning.h
  /home/tristan/Compilation/blueprintcalc/src/pinning.cpp
  /usr/include/qt5/Gentoo/gentoo-qconfig.h
+ /usr/include/qt5/QtCore/QDebug
  /usr/include/qt5/QtCore/QPointF
+ /usr/include/qt5/QtCore/qalgorithms.h
+ /usr/include/qt5/QtCore/qarraydata.h
  /usr/include/qt5/QtCore/qatomic.h
  /usr/include/qt5/QtCore/qatomic_bootstrap.h
  /usr/include/qt5/QtCore/qatomic_cxx11.h
  /usr/include/qt5/QtCore/qatomic_msvc.h
  /usr/include/qt5/QtCore/qbasicatomic.h
+ /usr/include/qt5/QtCore/qbytearray.h
+ /usr/include/qt5/QtCore/qbytearraylist.h
+ /usr/include/qt5/QtCore/qchar.h
  /usr/include/qt5/QtCore/qcompilerdetection.h
  /usr/include/qt5/QtCore/qconfig-bootstrapped.h
  /usr/include/qt5/QtCore/qconfig.h
+ /usr/include/qt5/QtCore/qcontainerfwd.h
+ /usr/include/qt5/QtCore/qcontiguouscache.h
+ /usr/include/qt5/QtCore/qcoreevent.h
+ /usr/include/qt5/QtCore/qdebug.h
  /usr/include/qt5/QtCore/qflags.h
  /usr/include/qt5/QtCore/qgenericatomic.h
  /usr/include/qt5/QtCore/qglobal.h
  /usr/include/qt5/QtCore/qglobalstatic.h
+ /usr/include/qt5/QtCore/qhash.h
+ /usr/include/qt5/QtCore/qhashfunctions.h
+ /usr/include/qt5/QtCore/qiodevice.h
+ /usr/include/qt5/QtCore/qiterator.h
+ /usr/include/qt5/QtCore/qlist.h
+ /usr/include/qt5/QtCore/qlocale.h
  /usr/include/qt5/QtCore/qlogging.h
+ /usr/include/qt5/QtCore/qmap.h
+ /usr/include/qt5/QtCore/qmetatype.h
  /usr/include/qt5/QtCore/qmutex.h
  /usr/include/qt5/QtCore/qnamespace.h
  /usr/include/qt5/QtCore/qnumeric.h
+ /usr/include/qt5/QtCore/qobject.h
+ /usr/include/qt5/QtCore/qobject_impl.h
+ /usr/include/qt5/QtCore/qobjectdefs.h
+ /usr/include/qt5/QtCore/qobjectdefs_impl.h
+ /usr/include/qt5/QtCore/qpair.h
  /usr/include/qt5/QtCore/qpoint.h
  /usr/include/qt5/QtCore/qprocessordetection.h
+ /usr/include/qt5/QtCore/qrefcount.h
+ /usr/include/qt5/QtCore/qregexp.h
+ /usr/include/qt5/QtCore/qscopedpointer.h
+ /usr/include/qt5/QtCore/qset.h
+ /usr/include/qt5/QtCore/qshareddata.h
+ /usr/include/qt5/QtCore/qsharedpointer.h
+ /usr/include/qt5/QtCore/qsharedpointer_impl.h
+ /usr/include/qt5/QtCore/qstring.h
+ /usr/include/qt5/QtCore/qstringalgorithms.h
+ /usr/include/qt5/QtCore/qstringbuilder.h
+ /usr/include/qt5/QtCore/qstringlist.h
+ /usr/include/qt5/QtCore/qstringliteral.h
+ /usr/include/qt5/QtCore/qstringmatcher.h
+ /usr/include/qt5/QtCore/qstringview.h
  /usr/include/qt5/QtCore/qsysinfo.h
  /usr/include/qt5/QtCore/qsystemdetection.h
  /usr/include/qt5/QtCore/qtcore-config.h
+ /usr/include/qt5/QtCore/qtextstream.h
  /usr/include/qt5/QtCore/qtypeinfo.h
+ /usr/include/qt5/QtCore/qvariant.h
+ /usr/include/qt5/QtCore/qvarlengtharray.h
+ /usr/include/qt5/QtCore/qvector.h
  /usr/include/qt5/QtCore/qversiontagging.h
 CMakeFiles/blueprintcalc.dir/src/window.cpp.o
  ../include/3dview.h
  ../include/enums.h
  ../include/imageview.h
+ ../include/pinning.h
  ../include/window.h
  /home/tristan/Compilation/blueprintcalc/src/window.cpp
  /usr/include/qt5/Gentoo/gentoo-qconfig.h
@@ -599,9 +648,11 @@ CMakeFiles/blueprintcalc.dir/src/window.cpp.o
  /usr/include/qt5/Qt3DExtras/Qt3DWindow
  /usr/include/qt5/Qt3DExtras/qt3dextras_global.h
  /usr/include/qt5/Qt3DExtras/qt3dwindow.h
+ /usr/include/qt5/QtCore/QDebug
  /usr/include/qt5/QtCore/QEvent
  /usr/include/qt5/QtCore/QMargins
  /usr/include/qt5/QtCore/QObject
+ /usr/include/qt5/QtCore/QPointF
  /usr/include/qt5/QtCore/QRect
  /usr/include/qt5/QtCore/qalgorithms.h
  /usr/include/qt5/QtCore/qarraydata.h
@@ -675,6 +726,7 @@ CMakeFiles/blueprintcalc.dir/src/window.cpp.o
  /usr/include/qt5/QtCore/qvarlengtharray.h
  /usr/include/qt5/QtCore/qvector.h
  /usr/include/qt5/QtCore/qversiontagging.h
+ /usr/include/qt5/QtGui/QKeyEvent
  /usr/include/qt5/QtGui/QWindow
  /usr/include/qt5/QtGui/qbrush.h
  /usr/include/qt5/QtGui/qcolor.h

@@ -9,48 +9,49 @@
 
 class Pinning
 {
-private:
+public:
 	struct Pin
 	{
 		QPointF pos;
 	};
 
-	struct Intersection
-	{
-		union {
-			std::array<Pin *, 2> pins;
-
-			struct {
-				Pin *pinA;
-				Pin *pinB;
-			};
-		};
-	};
-
-	struct Task
-	{
-		unsigned short currentView;
-		IntersectionType::Type intersectionType;
-		Intersection intersection;
-	};
-
-	Task *m_task;
-	std::vector<Pin *> m_pins;
-	std::map<IntersectionType::Type, std::vector<Intersection> > m_intersections;
-
-public:
 	struct Alignment
 	{
 		float scaling;
 		float translation;
 	};
 
+private:
+	struct Selection
+	{
+		Pin *pin = nullptr;
+		ImageViewType::Type imageView = ImageViewType::NONE;
+	};
+
+	struct Intersection
+	{
+		std::array<Selection, 2> selections;
+	};
+
+	struct Task
+	{
+		unsigned short currentSelectionIndex = 0;
+		Intersection intersection;
+	};
+
+	class ValidIntersectionPredicate;
+
+	Task *m_task;
+	std::vector<Pin *> m_pins;
+	std::map<IntersectionType::Type, std::vector<Intersection> > m_intersections;
+
+public:
 	explicit Pinning();
 
 	// Débute une sequence de selection de point sur deux images.
-	void newIntersectionTask(IntersectionType::Type intersectionType);
+	void newIntersectionTask();
 	// Ajoute un nouveau point à la sequence
-	void newPin(ImageViewType::Type viewType, const QPointF &pos);
+	Pin *newPin(ImageViewType::Type viewType, const QPointF &pos);
 
 	// Aligne deux images.
 	Alignment align(IntersectionType::Type intersectionType);
