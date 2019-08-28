@@ -122,9 +122,22 @@ CMakeFiles/blueprintcalc.dir/src/pinning.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/blueprintcalc.dir/src/pinning.cpp.s"
 	/usr/lib/ccache/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tristan/Compilation/blueprintcalc/src/pinning.cpp -o CMakeFiles/blueprintcalc.dir/src/pinning.cpp.s
 
+CMakeFiles/blueprintcalc.dir/src/texturedplane.cpp.o: CMakeFiles/blueprintcalc.dir/flags.make
+CMakeFiles/blueprintcalc.dir/src/texturedplane.cpp.o: ../src/texturedplane.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tristan/Compilation/blueprintcalc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/blueprintcalc.dir/src/texturedplane.cpp.o"
+	/usr/lib/ccache/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/blueprintcalc.dir/src/texturedplane.cpp.o -c /home/tristan/Compilation/blueprintcalc/src/texturedplane.cpp
+
+CMakeFiles/blueprintcalc.dir/src/texturedplane.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/blueprintcalc.dir/src/texturedplane.cpp.i"
+	/usr/lib/ccache/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tristan/Compilation/blueprintcalc/src/texturedplane.cpp > CMakeFiles/blueprintcalc.dir/src/texturedplane.cpp.i
+
+CMakeFiles/blueprintcalc.dir/src/texturedplane.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/blueprintcalc.dir/src/texturedplane.cpp.s"
+	/usr/lib/ccache/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tristan/Compilation/blueprintcalc/src/texturedplane.cpp -o CMakeFiles/blueprintcalc.dir/src/texturedplane.cpp.s
+
 CMakeFiles/blueprintcalc.dir/src/window.cpp.o: CMakeFiles/blueprintcalc.dir/flags.make
 CMakeFiles/blueprintcalc.dir/src/window.cpp.o: ../src/window.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tristan/Compilation/blueprintcalc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/blueprintcalc.dir/src/window.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tristan/Compilation/blueprintcalc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/blueprintcalc.dir/src/window.cpp.o"
 	/usr/lib/ccache/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/blueprintcalc.dir/src/window.cpp.o -c /home/tristan/Compilation/blueprintcalc/src/window.cpp
 
 CMakeFiles/blueprintcalc.dir/src/window.cpp.i: cmake_force
@@ -137,7 +150,7 @@ CMakeFiles/blueprintcalc.dir/src/window.cpp.s: cmake_force
 
 CMakeFiles/blueprintcalc.dir/main.cpp.o: CMakeFiles/blueprintcalc.dir/flags.make
 CMakeFiles/blueprintcalc.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tristan/Compilation/blueprintcalc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/blueprintcalc.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tristan/Compilation/blueprintcalc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/blueprintcalc.dir/main.cpp.o"
 	/usr/lib/ccache/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/blueprintcalc.dir/main.cpp.o -c /home/tristan/Compilation/blueprintcalc/main.cpp
 
 CMakeFiles/blueprintcalc.dir/main.cpp.i: cmake_force
@@ -155,6 +168,7 @@ blueprintcalc_OBJECTS = \
 "CMakeFiles/blueprintcalc.dir/src/imageview.cpp.o" \
 "CMakeFiles/blueprintcalc.dir/src/infoview.cpp.o" \
 "CMakeFiles/blueprintcalc.dir/src/pinning.cpp.o" \
+"CMakeFiles/blueprintcalc.dir/src/texturedplane.cpp.o" \
 "CMakeFiles/blueprintcalc.dir/src/window.cpp.o" \
 "CMakeFiles/blueprintcalc.dir/main.cpp.o"
 
@@ -166,6 +180,7 @@ blueprintcalc: CMakeFiles/blueprintcalc.dir/src/commandline.cpp.o
 blueprintcalc: CMakeFiles/blueprintcalc.dir/src/imageview.cpp.o
 blueprintcalc: CMakeFiles/blueprintcalc.dir/src/infoview.cpp.o
 blueprintcalc: CMakeFiles/blueprintcalc.dir/src/pinning.cpp.o
+blueprintcalc: CMakeFiles/blueprintcalc.dir/src/texturedplane.cpp.o
 blueprintcalc: CMakeFiles/blueprintcalc.dir/src/window.cpp.o
 blueprintcalc: CMakeFiles/blueprintcalc.dir/main.cpp.o
 blueprintcalc: CMakeFiles/blueprintcalc.dir/build.make
@@ -179,7 +194,7 @@ blueprintcalc: /usr/lib64/libQt5Gui.so.5.12.3
 blueprintcalc: /usr/lib64/libQt5Network.so.5.12.3
 blueprintcalc: /usr/lib64/libQt5Core.so.5.12.3
 blueprintcalc: CMakeFiles/blueprintcalc.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tristan/Compilation/blueprintcalc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable blueprintcalc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tristan/Compilation/blueprintcalc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable blueprintcalc"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/blueprintcalc.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -11,6 +11,7 @@ set(SRCS
 	src/imageview.cpp
 	src/infoview.cpp
 	src/pinning.cpp
+	src/texturedplane.cpp
 	src/window.cpp
 
 	main.cpp

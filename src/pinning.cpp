@@ -85,8 +85,10 @@ Pinning::Pin *Pinning::newPin(ImageViewType::Type viewType, const QPointF &pos)
 	return pin;
 }
 
-Pinning::Alignment Pinning::align(IntersectionType::Type intersectionType)
+Pinning::Alignment Pinning::align(IntersectionType::Type )
 {
+	qInfo() << "align";
+
 	Alignment result;
 	/*const std::vector<Intersection> & intersections = m_intersections[intersectionType];
 	const unsigned short n = intersections.size();

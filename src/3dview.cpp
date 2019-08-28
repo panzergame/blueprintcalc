@@ -2,24 +2,26 @@
 
 #include <Qt3DRender/QCamera>
 
-#include <Qt3DExtras/QTorusMesh>
-#include <Qt3DExtras/QPlaneMesh>
-#include <Qt3DExtras/QPhongMaterial>
-#include <Qt3DExtras/QTextureMaterial>
 #include <Qt3DExtras/QOrbitCameraController>
 #include <Qt3DExtras/QFirstPersonCameraController>
+
+#include <Qt3DExtras/QPlaneMesh>
+#include <Qt3DExtras/QTorusMesh>
+#include <Qt3DExtras/QPhongMaterial>
 
 #include <Qt3DCore/QEntity>
 #include <Qt3DCore/QTransform>
 
 #include <3dview.h>
+#include <texturedplane.h>
 
 View3D::View3D(const QStringList &imageNames, QWidget *parent)
-	:QWidget(parent)
-{
-    Qt3DCore::QEntity* root = new Qt3DCore::QEntity;
-    Qt3DCore::QEntity* torus = new Qt3DCore::QEntity(root);
-	Qt3DCore::QEntity* plane = new Qt3DCore::QEntity(root);
+	:QWidget(parent),
+	m_root(new Qt3DCore::QEntity)
+{ 
+#if 0
+	Qt3DCore::QEntity* torus = new Qt3DCore::QEntity(m_root);
+	Qt3DCore::QEntity* plane = new Qt3DCore::QEntity(m_root);
 
     Qt3DExtras::QTorusMesh* mesh = new Qt3DExtras::QTorusMesh;
     mesh->setRadius(5);
@@ -36,43 +38,68 @@ View3D::View3D(const QStringList &imageNames, QWidget *parent)
     torusTransform->setRotation(QQuaternion::fromAxisAndAngle(QVector3D(1,0,0), 45.f ));
 
 	Qt3DExtras::QPhongMaterial *torusMaterial = new Qt3DExtras::QPhongMaterial();
-	Qt3DExtras::QTextureMaterial *planeMaterial = new Qt3DExtras::QTextureMaterial();
-// 	torusMaterial->setDiffuse(QColor(QRgb(0xbeb32b)));
+	torusMaterial->setDiffuse(QColor(QRgb(0xbeb32b)));
+// 	Qt3DExtras::QTextureMaterial *planeMaterial = new Qt3DExtras::QTextureMaterial();
 
 	torus->addComponent(mesh);
-// 	torus->addComponent(torusTransform);
+	torus->addComponent(torusTransform);
 	torus->addComponent(torusMaterial);
 
 	plane->addComponent(planeMesh);
 	plane->addComponent(torusMaterial);
-
-    // camera
-    Qt3DRender::QCamera *camera = m_view.camera();
-//     camera->lens()->setPerspectiveProjection(45.0f, 16.0f/9.0f, 0.1f, 1000.0f);
-	camera->setProjectionType(Qt3DRender::QCameraLens::PerspectiveProjection);
-	camera->setFieldOfView(25);
-	camera->setNearPlane(0.1f);
-	camera->setFarPlane(1000.0f);
-    camera->setPosition(QVector3D(0, 0, 40.0f));
-    camera->setViewCenter(QVector3D(0, 40, 40));
-
-    // manipulator
-    Qt3DExtras::QOrbitCameraController* manipulator = new Qt3DExtras::QOrbitCameraController(root);
-    manipulator->setLinearSpeed(50.f);
-    manipulator->setLookSpeed(180.f);
-    manipulator->setCamera(camera);
+#endif 
     
-    m_view.setRootEntity(root);
+	setupCamera();
+	setupPlanes(imageNames);
 
-	QWidget *content = QWidget::createWindowContainer(&m_view);
+    m_view.setRootEntity(m_root);
 
+	m_view.show();
+
+	/*QWidget *content = QWidget::createWindowContainer(&m_view);
 	QHBoxLayout *layout = new QHBoxLayout();
-
 	layout->addWidget(content);
-
-	setLayout(layout);
+	setLayout(layout);*/
 }
 
 View3D::~View3D()
 {
 }
+
+void View3D::setupPlanes(const QStringList& imageNames)
+{
+	static const QQuaternion transforms[ImageViewType::MAX] = {
+		QQuaternion::fromAxisAndAngle(QVector3D(1.0f, 0.0f, 0.0f), 90.0f),
+		QQuaternion::fromAxisAndAngle(QVector3D(0.0f, 0.0f, 1.0f), 90.0f),
+		QQuaternion::fromAxisAndAngle(QVector3D(0.0f, 0.0f, 1.0f), -90.0f),
+		QQuaternion::fromAxisAndAngle(QVector3D(0.0f, 0.0f, 1.0f), 0.0f)
+	};
+
+	for (unsigned short i = 0; i < imageNames.size(); ++i) {
+		TexturedPlane *plane = new TexturedPlane(imageNames[i], m_root);
+
+		Qt3DCore::QTransform *trans = new Qt3DCore::QTransform();
+		trans->setRotation(transforms[i]);
+		plane->addComponent(trans);
+
+		m_planes[i] = plane;
+	}
+}
+
+void View3D::setupCamera()
+{
+	// camera
+	Qt3DRender::QCamera *camera = m_view.camera();
+	camera->lens()->setPerspectiveProjection(45.0f, 16.0f/9.0f, 0.1f, 1000.0f);
+	camera->setPosition(QVector3D(4.0f, 4.0f, 0.0f));
+	camera->setViewCenter(QVector3D(0, 0, 0));
+
+	// For camera controls
+	Qt3DExtras::QOrbitCameraController *camController = new Qt3DExtras::QOrbitCameraController(m_root);
+	camController->setLinearSpeed( 50.0f );
+	camController->setLookSpeed( 180.0f );
+	camController->setCamera(camera);
+}
+
+
+

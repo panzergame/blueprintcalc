@@ -285,6 +285,33 @@ src/pinning.cpp.s:
 	$(MAKE) -f CMakeFiles/blueprintcalc.dir/build.make CMakeFiles/blueprintcalc.dir/src/pinning.cpp.s
 .PHONY : src/pinning.cpp.s
 
+src/texturedplane.o: src/texturedplane.cpp.o
+
+.PHONY : src/texturedplane.o
+
+# target to build an object file
+src/texturedplane.cpp.o:
+	$(MAKE) -f CMakeFiles/blueprintcalc.dir/build.make CMakeFiles/blueprintcalc.dir/src/texturedplane.cpp.o
+.PHONY : src/texturedplane.cpp.o
+
+src/texturedplane.i: src/texturedplane.cpp.i
+
+.PHONY : src/texturedplane.i
+
+# target to preprocess a source file
+src/texturedplane.cpp.i:
+	$(MAKE) -f CMakeFiles/blueprintcalc.dir/build.make CMakeFiles/blueprintcalc.dir/src/texturedplane.cpp.i
+.PHONY : src/texturedplane.cpp.i
+
+src/texturedplane.s: src/texturedplane.cpp.s
+
+.PHONY : src/texturedplane.s
+
+# target to generate assembly for a file
+src/texturedplane.cpp.s:
+	$(MAKE) -f CMakeFiles/blueprintcalc.dir/build.make CMakeFiles/blueprintcalc.dir/src/texturedplane.cpp.s
+.PHONY : src/texturedplane.cpp.s
+
 src/window.o: src/window.cpp.o
 
 .PHONY : src/window.o
@@ -339,6 +366,9 @@ help:
 	@echo "... src/pinning.o"
 	@echo "... src/pinning.i"
 	@echo "... src/pinning.s"
+	@echo "... src/texturedplane.o"
+	@echo "... src/texturedplane.i"
+	@echo "... src/texturedplane.s"
 	@echo "... src/window.o"
 	@echo "... src/window.i"
 	@echo "... src/window.s"

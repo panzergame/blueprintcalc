@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/tristan/Compilation/blueprintcalc/src/imageview.cpp" "/home/tristan/Compilation/blueprintcalc/build/CMakeFiles/blueprintcalc.dir/src/imageview.cpp.o"
   "/home/tristan/Compilation/blueprintcalc/src/infoview.cpp" "/home/tristan/Compilation/blueprintcalc/build/CMakeFiles/blueprintcalc.dir/src/infoview.cpp.o"
   "/home/tristan/Compilation/blueprintcalc/src/pinning.cpp" "/home/tristan/Compilation/blueprintcalc/build/CMakeFiles/blueprintcalc.dir/src/pinning.cpp.o"
+  "/home/tristan/Compilation/blueprintcalc/src/texturedplane.cpp" "/home/tristan/Compilation/blueprintcalc/build/CMakeFiles/blueprintcalc.dir/src/texturedplane.cpp.o"
   "/home/tristan/Compilation/blueprintcalc/src/window.cpp" "/home/tristan/Compilation/blueprintcalc/build/CMakeFiles/blueprintcalc.dir/src/window.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

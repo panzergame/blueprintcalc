@@ -152,6 +152,8 @@ CMakeFiles/blueprintcalc.dir/main.cpp.o
  /usr/include/qt5/QtWidgets/qwidget.h
 CMakeFiles/blueprintcalc.dir/src/3dview.cpp.o
  ../include/3dview.h
+ ../include/enums.h
+ ../include/texturedplane.h
  /home/tristan/Compilation/blueprintcalc/src/3dview.cpp
  /usr/include/qt5/Gentoo/gentoo-qconfig.h
  /usr/include/qt5/Qt3DCore/QEntity
@@ -170,7 +172,6 @@ CMakeFiles/blueprintcalc.dir/src/3dview.cpp.o
  /usr/include/qt5/Qt3DExtras/QOrbitCameraController
  /usr/include/qt5/Qt3DExtras/QPhongMaterial
  /usr/include/qt5/Qt3DExtras/QPlaneMesh
- /usr/include/qt5/Qt3DExtras/QTextureMaterial
  /usr/include/qt5/Qt3DExtras/QTorusMesh
  /usr/include/qt5/Qt3DExtras/Qt3DWindow
  /usr/include/qt5/Qt3DExtras/qabstractcameracontroller.h
@@ -180,7 +181,6 @@ CMakeFiles/blueprintcalc.dir/src/3dview.cpp.o
  /usr/include/qt5/Qt3DExtras/qplanemesh.h
  /usr/include/qt5/Qt3DExtras/qt3dextras_global.h
  /usr/include/qt5/Qt3DExtras/qt3dwindow.h
- /usr/include/qt5/Qt3DExtras/qtexturematerial.h
  /usr/include/qt5/Qt3DExtras/qtorusmesh.h
  /usr/include/qt5/Qt3DRender/QCamera
  /usr/include/qt5/Qt3DRender/qcamera.h
@@ -272,10 +272,8 @@ CMakeFiles/blueprintcalc.dir/src/3dview.cpp.o
  /usr/include/qt5/QtCore/qvector.h
  /usr/include/qt5/QtCore/qversiontagging.h
  /usr/include/qt5/QtGui/QColor
- /usr/include/qt5/QtGui/QMatrix3x3
  /usr/include/qt5/QtGui/QMatrix4x4
  /usr/include/qt5/QtGui/QQuaternion
- /usr/include/qt5/QtGui/QVector2D
  /usr/include/qt5/QtGui/QVector3D
  /usr/include/qt5/QtGui/QWindow
  /usr/include/qt5/QtGui/qbrush.h
@@ -635,6 +633,146 @@ CMakeFiles/blueprintcalc.dir/src/pinning.cpp.o
  /usr/include/qt5/QtCore/qvarlengtharray.h
  /usr/include/qt5/QtCore/qvector.h
  /usr/include/qt5/QtCore/qversiontagging.h
+CMakeFiles/blueprintcalc.dir/src/texturedplane.cpp.o
+ ../include/texturedplane.h
+ /home/tristan/Compilation/blueprintcalc/src/texturedplane.cpp
+ /usr/include/qt5/Gentoo/gentoo-qconfig.h
+ /usr/include/qt5/Qt3DCore/QEntity
+ /usr/include/qt5/Qt3DCore/qcomponent.h
+ /usr/include/qt5/Qt3DCore/qentity.h
+ /usr/include/qt5/Qt3DCore/qnode.h
+ /usr/include/qt5/Qt3DCore/qnodecommand.h
+ /usr/include/qt5/Qt3DCore/qnodecreatedchange.h
+ /usr/include/qt5/Qt3DCore/qnodeid.h
+ /usr/include/qt5/Qt3DCore/qscenechange.h
+ /usr/include/qt5/Qt3DCore/qt3dcore-config.h
+ /usr/include/qt5/Qt3DCore/qt3dcore_global.h
+ /usr/include/qt5/Qt3DExtras/QDiffuseMapMaterial
+ /usr/include/qt5/Qt3DExtras/QPlaneMesh
+ /usr/include/qt5/Qt3DExtras/QTextureMaterial
+ /usr/include/qt5/Qt3DExtras/QTorusMesh
+ /usr/include/qt5/Qt3DExtras/qdiffusemapmaterial.h
+ /usr/include/qt5/Qt3DExtras/qplanemesh.h
+ /usr/include/qt5/Qt3DExtras/qt3dextras_global.h
+ /usr/include/qt5/Qt3DExtras/qtexturematerial.h
+ /usr/include/qt5/Qt3DExtras/qtorusmesh.h
+ /usr/include/qt5/Qt3DRender/QTextureImage
+ /usr/include/qt5/Qt3DRender/qabstractfunctor.h
+ /usr/include/qt5/Qt3DRender/qabstracttexture.h
+ /usr/include/qt5/Qt3DRender/qabstracttextureimage.h
+ /usr/include/qt5/Qt3DRender/qgeometry.h
+ /usr/include/qt5/Qt3DRender/qgeometryrenderer.h
+ /usr/include/qt5/Qt3DRender/qmaterial.h
+ /usr/include/qt5/Qt3DRender/qt3drender_global.h
+ /usr/include/qt5/Qt3DRender/qtextureimage.h
+ /usr/include/qt5/Qt3DRender/qtextureimagedata.h
+ /usr/include/qt5/Qt3DRender/qtextureimagedatagenerator.h
+ /usr/include/qt5/QtCore/QDebug
+ /usr/include/qt5/QtCore/QHashFunctions
+ /usr/include/qt5/QtCore/QMetaType
+ /usr/include/qt5/QtCore/QObject
+ /usr/include/qt5/QtCore/QScopedPointer
+ /usr/include/qt5/QtCore/QSharedPointer
+ /usr/include/qt5/QtCore/QSize
+ /usr/include/qt5/QtCore/QUrl
+ /usr/include/qt5/QtCore/QVariant
+ /usr/include/qt5/QtCore/qalgorithms.h
+ /usr/include/qt5/QtCore/qarraydata.h
+ /usr/include/qt5/QtCore/qatomic.h
+ /usr/include/qt5/QtCore/qatomic_bootstrap.h
+ /usr/include/qt5/QtCore/qatomic_cxx11.h
+ /usr/include/qt5/QtCore/qatomic_msvc.h
+ /usr/include/qt5/QtCore/qbasicatomic.h
+ /usr/include/qt5/QtCore/qbytearray.h
+ /usr/include/qt5/QtCore/qbytearraylist.h
+ /usr/include/qt5/QtCore/qchar.h
+ /usr/include/qt5/QtCore/qcompilerdetection.h
+ /usr/include/qt5/QtCore/qconfig-bootstrapped.h
+ /usr/include/qt5/QtCore/qconfig.h
+ /usr/include/qt5/QtCore/qcontainerfwd.h
+ /usr/include/qt5/QtCore/qcontiguouscache.h
+ /usr/include/qt5/QtCore/qcoreevent.h
+ /usr/include/qt5/QtCore/qdatastream.h
+ /usr/include/qt5/QtCore/qdebug.h
+ /usr/include/qt5/QtCore/qflags.h
+ /usr/include/qt5/QtCore/qgenericatomic.h
+ /usr/include/qt5/QtCore/qglobal.h
+ /usr/include/qt5/QtCore/qglobalstatic.h
+ /usr/include/qt5/QtCore/qhash.h
+ /usr/include/qt5/QtCore/qhashfunctions.h
+ /usr/include/qt5/QtCore/qiodevice.h
+ /usr/include/qt5/QtCore/qiterator.h
+ /usr/include/qt5/QtCore/qline.h
+ /usr/include/qt5/QtCore/qlist.h
+ /usr/include/qt5/QtCore/qlocale.h
+ /usr/include/qt5/QtCore/qlogging.h
+ /usr/include/qt5/QtCore/qmap.h
+ /usr/include/qt5/QtCore/qmargins.h
+ /usr/include/qt5/QtCore/qmetatype.h
+ /usr/include/qt5/QtCore/qmutex.h
+ /usr/include/qt5/QtCore/qnamespace.h
+ /usr/include/qt5/QtCore/qnumeric.h
+ /usr/include/qt5/QtCore/qobject.h
+ /usr/include/qt5/QtCore/qobject_impl.h
+ /usr/include/qt5/QtCore/qobjectdefs.h
+ /usr/include/qt5/QtCore/qobjectdefs_impl.h
+ /usr/include/qt5/QtCore/qpair.h
+ /usr/include/qt5/QtCore/qpoint.h
+ /usr/include/qt5/QtCore/qprocessordetection.h
+ /usr/include/qt5/QtCore/qrect.h
+ /usr/include/qt5/QtCore/qrefcount.h
+ /usr/include/qt5/QtCore/qregexp.h
+ /usr/include/qt5/QtCore/qscopedpointer.h
+ /usr/include/qt5/QtCore/qset.h
+ /usr/include/qt5/QtCore/qshareddata.h
+ /usr/include/qt5/QtCore/qsharedpointer.h
+ /usr/include/qt5/QtCore/qsharedpointer_impl.h
+ /usr/include/qt5/QtCore/qsize.h
+ /usr/include/qt5/QtCore/qstring.h
+ /usr/include/qt5/QtCore/qstringalgorithms.h
+ /usr/include/qt5/QtCore/qstringbuilder.h
+ /usr/include/qt5/QtCore/qstringlist.h
+ /usr/include/qt5/QtCore/qstringliteral.h
+ /usr/include/qt5/QtCore/qstringmatcher.h
+ /usr/include/qt5/QtCore/qstringview.h
+ /usr/include/qt5/QtCore/qsysinfo.h
+ /usr/include/qt5/QtCore/qsystemdetection.h
+ /usr/include/qt5/QtCore/qt_windows.h
+ /usr/include/qt5/QtCore/qtcore-config.h
+ /usr/include/qt5/QtCore/qtextstream.h
+ /usr/include/qt5/QtCore/qtypeinfo.h
+ /usr/include/qt5/QtCore/qurl.h
+ /usr/include/qt5/QtCore/qurlquery.h
+ /usr/include/qt5/QtCore/qvariant.h
+ /usr/include/qt5/QtCore/qvarlengtharray.h
+ /usr/include/qt5/QtCore/qvector.h
+ /usr/include/qt5/QtCore/qversiontagging.h
+ /usr/include/qt5/QtGui/QColor
+ /usr/include/qt5/QtGui/QImage
+ /usr/include/qt5/QtGui/QMatrix3x3
+ /usr/include/qt5/QtGui/QOpenGLTexture
+ /usr/include/qt5/QtGui/QVector2D
+ /usr/include/qt5/QtGui/qcolor.h
+ /usr/include/qt5/QtGui/qgenericmatrix.h
+ /usr/include/qt5/QtGui/qimage.h
+ /usr/include/qt5/QtGui/qmatrix.h
+ /usr/include/qt5/QtGui/qopengl.h
+ /usr/include/qt5/QtGui/qopengles2ext.h
+ /usr/include/qt5/QtGui/qopenglext.h
+ /usr/include/qt5/QtGui/qopengltexture.h
+ /usr/include/qt5/QtGui/qpaintdevice.h
+ /usr/include/qt5/QtGui/qpainterpath.h
+ /usr/include/qt5/QtGui/qpixelformat.h
+ /usr/include/qt5/QtGui/qpolygon.h
+ /usr/include/qt5/QtGui/qregion.h
+ /usr/include/qt5/QtGui/qrgb.h
+ /usr/include/qt5/QtGui/qrgba64.h
+ /usr/include/qt5/QtGui/qtgui-config.h
+ /usr/include/qt5/QtGui/qtguiglobal.h
+ /usr/include/qt5/QtGui/qtransform.h
+ /usr/include/qt5/QtGui/qvector2d.h
+ /usr/include/qt5/QtGui/qwindowdefs.h
+ /usr/include/qt5/QtGui/qwindowdefs_win.h
 CMakeFiles/blueprintcalc.dir/src/window.cpp.o
  ../include/3dview.h
  ../include/enums.h

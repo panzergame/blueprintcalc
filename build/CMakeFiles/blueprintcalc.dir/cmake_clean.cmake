@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/blueprintcalc.dir/src/imageview.cpp.o"
   "CMakeFiles/blueprintcalc.dir/src/infoview.cpp.o"
   "CMakeFiles/blueprintcalc.dir/src/pinning.cpp.o"
+  "CMakeFiles/blueprintcalc.dir/src/texturedplane.cpp.o"
   "CMakeFiles/blueprintcalc.dir/src/window.cpp.o"
   "CMakeFiles/blueprintcalc.dir/main.cpp.o"
   "blueprintcalc.pdb"
