@@ -56,10 +56,10 @@ View3D::View3D(const QStringList &imageNames, QWidget *parent)
 
 	m_view.show();
 
-	/*QWidget *content = QWidget::createWindowContainer(&m_view);
+	QWidget *content = QWidget::createWindowContainer(&m_view);
 	QHBoxLayout *layout = new QHBoxLayout();
 	layout->addWidget(content);
-	setLayout(layout);*/
+	setLayout(layout);
 }
 
 View3D::~View3D()
