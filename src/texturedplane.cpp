@@ -6,8 +6,11 @@
 #include <Qt3DExtras/QTextureMaterial>
 #include <Qt3DRender/QTextureImage>
 
+#include <Qt3DCore/QTransform>
+
 TexturedPlane::TexturedPlane(const QString& imageName, Qt3DCore::QEntity *root)
-	:Qt3DCore::QEntity(root)
+	:Qt3DCore::QEntity(root),
+	m_transform(new Qt3DCore::QTransform())
 {
 	Qt3DExtras::QPlaneMesh *mesh = new Qt3DExtras::QPlaneMesh();
 
@@ -26,4 +29,14 @@ TexturedPlane::TexturedPlane(const QString& imageName, Qt3DCore::QEntity *root)
 
 	addComponent(mesh);
 	addComponent(material);
+	addComponent(m_transform);
 }
+
+void TexturedPlane::transformX(float scaling, float translation)
+{
+}
+
+void TexturedPlane::transformY(float scaling, float translation)
+{
+}
+

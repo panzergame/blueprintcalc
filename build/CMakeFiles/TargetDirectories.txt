@@ -1,3 +1,0 @@
-/home/tristan/Compilation/blueprintcalc/build/CMakeFiles/rebuild_cache.dir
-/home/tristan/Compilation/blueprintcalc/build/CMakeFiles/blueprintcalc.dir
-/home/tristan/Compilation/blueprintcalc/build/CMakeFiles/edit_cache.dir

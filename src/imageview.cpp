@@ -2,20 +2,21 @@
 #include <QWheelEvent>
 
 #include <imageview.h>
+#include <selector.h>
 
 void ImageView::mousePressEvent(QMouseEvent* event)
 {
 	if (event->button() == Qt::LeftButton && event->modifiers() == Qt::ControlModifier) {
 		const QPointF pos = mapToScene(event->pos());
 
-		Pinning::Pin *pin = m_pinning.newPin(m_viewType, pos);
+		Alignment::Point *point = Selector::singleton.newPoint(m_viewType, pos);
 
-		if (pin) {
+		if (point) {
 			static const float rad = 1.0f;
 			QGraphicsEllipseItem *ellipse = scene()->addEllipse(pos.x() - rad, pos.y() - rad, rad * 2.0f, rad * 2.0f);
 
 			// Association vue modèle.
-			m_ellipseToPin[ellipse] = pin;
+			m_ellipseToPoint[ellipse] = point;
 		}
 	} else {
 		QGraphicsView::mousePressEvent(event);
@@ -32,10 +33,9 @@ void ImageView::wheelEvent(QWheelEvent* event)
 	}
 }
 
-ImageView::ImageView(const QString &name, ImageViewType::Type viewType, Pinning& pinning, QWidget *parent)
+ImageView::ImageView(const QString &name, ImageViewType::Type viewType, QWidget *parent)
 	:QGraphicsView(new QGraphicsScene(), parent),
-	m_viewType(viewType),
-	m_pinning(pinning)
+	m_viewType(viewType)
 {
 	setDragMode(QGraphicsView::ScrollHandDrag);
 	scale(0.15f, 0.15f);

@@ -6,20 +6,19 @@
 #include <map>
 
 #include <enums.h>
-#include <pinning.h>
+#include <alignment.h>
 
 class ImageView : public QGraphicsView
 {
 private:
 	ImageViewType::Type m_viewType;
-	Pinning &m_pinning;
-	std::map<QGraphicsEllipseItem *, Pinning::Pin *> m_ellipseToPin;
+	std::map<QGraphicsEllipseItem *, Alignment::Point *> m_ellipseToPoint;
 
 protected Q_SLOTS:
 	void wheelEvent(QWheelEvent *event) override;
 	void mousePressEvent(QMouseEvent *event) override;
 
 public:
-	explicit ImageView(const QString &imageFileName, ImageViewType::Type viewType, Pinning &pinning, QWidget *parent=nullptr);
+	explicit ImageView(const QString &imageFileName, ImageViewType::Type viewType, QWidget *parent=nullptr);
 	virtual ~ImageView();
 };
