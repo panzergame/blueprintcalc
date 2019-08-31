@@ -16,6 +16,7 @@ class View3D : public QWidget
 private:
 	Qt3DExtras::Qt3DWindow m_view;
 	Qt3DCore::QEntity *m_root;
+	std::array<TexturedPlane *, ImageViewType::MAX> m_planes;
 
 	void setupPlanes(const QStringList& imageNames);
 	void setupCamera();

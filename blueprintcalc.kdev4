@@ -1,4 +1,4 @@
 [Project]
-CreatedFrom=Makefile
-Manager=KDevCustomMakeManager
+CreatedFrom=blueprintcalc.pro
+Manager=KDevQMakeManager
 Name=blueprintcalc
