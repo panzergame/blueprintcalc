@@ -1,9 +1,8 @@
-#include <texturedplane.h>
+#include <render/plane.h>
+#include <render/point.h>
 
 #include <Qt3DExtras/QPlaneMesh>
 #include <Qt3DExtras/QTorusMesh>
-#include <Qt3DExtras/QSphereMesh>
-#include <Qt3DExtras/QPhongMaterial>
 #include <Qt3DExtras/QDiffuseMapMaterial>
 #include <Qt3DExtras/QTextureMaterial>
 #include <Qt3DRender/QTextureImage>
@@ -12,7 +11,10 @@
 
 constexpr float PLANE_SCALE = 0.001f;
 
-TexturedPlane::TexturedPlane(const QString& imageName, Qt3DCore::QEntity *root)
+namespace Render
+{
+
+Plane::Plane(const QString& imageName, Qt3DCore::QEntity *root)
 	:Qt3DCore::QEntity(root),
 	m_transform(new Qt3DCore::QTransform())
 {
@@ -38,31 +40,17 @@ TexturedPlane::TexturedPlane(const QString& imageName, Qt3DCore::QEntity *root)
 	addComponent(m_transform);
 }
 
-void TexturedPlane::addPoint(Alignment::Point *point)
+QVector3D Plane::mapToPlane(const QPointF& pos) const
 {
-	Qt3DCore::QEntity *node = new Qt3DCore::QEntity(this);
-
-	Qt3DExtras::QPhongMaterial *material = new Qt3DExtras::QPhongMaterial();
-	material->diffuse() = QColor(0, 0, 0);
-
-	Qt3DExtras::QSphereMesh *mesh = new Qt3DExtras::QSphereMesh();
-	mesh->setRadius(0.01f);
-
-	Qt3DCore::QTransform *trans = new Qt3DCore::QTransform();
-	const QVector3D pos = QVector3D(point->pos.x() - m_size.x() / 2.0f, 0.0f, point->pos.y() - m_size.y() / 2.0f) * PLANE_SCALE;
-	trans->setTranslation(pos);
-	qInfo() << point->pos << pos << m_size;
-
-	node->addComponent(trans);
-	node->addComponent(mesh);
-	node->addComponent(material);
+	return QVector3D(pos.x() - m_size.x() / 2.0f, 0.0f, pos.y() - m_size.y() / 2.0f) * PLANE_SCALE;
 }
 
-void TexturedPlane::transformX(float scaling, float translation)
+void Plane::transformX(float scaling, float translation)
 {
 }
 
-void TexturedPlane::transformY(float scaling, float translation)
+void Plane::transformY(float scaling, float translation)
 {
 }
 
+};

@@ -3,34 +3,35 @@
 
 #include <iostream>
 
-#include <3dview.h>
-#include <commandline.h>
-#include <imageview.h>
-#include <infoview.h>
-#include <window.h>
+#include <view/space.h>
+#include <view/image.h>
+#include <view/info.h>
+#include <view/window.h>
+
+#include <control/commandline.h>
 
 int main(int argc, char **argv)
 {
 	QApplication app(argc, argv);
 
-	CommandLine parser(app);
+	Control::CommandLine parser(app);
 	const QStringList imageNames = parser.GetImageNames();
 
-	ImageView *imageViews[ImageViewType::MAX];
-	for (unsigned short i = 0; i < ImageViewType::MAX; ++i) {
+	View::Image *images[Core::ImageType::MAX];
+	for (unsigned short i = 0; i < Core::ImageType::MAX; ++i) {
 		const QString &name = imageNames[i];
 
-		imageViews[i] = new ImageView(name, (ImageViewType::Type)i);
+		images[i] = new View::Image(name, (Core::ImageType::Type)i);
 	}
 
-	View3D *view3D = new View3D(imageNames);
-	InfoView *infoView = new InfoView();
+	View::Space *space = new View::Space(imageNames);
+	View::Info *info = new View::Info();
 
-	Window window(view3D, infoView, imageViews);
+	View::Window window(space, info, images);
 
 	app.exec();
 
-	for (unsigned short i = 0; i < ImageViewType::MAX; ++i) {
-		delete imageViews[i];
+	for (unsigned short i = 0; i < Core::ImageType::MAX; ++i) {
+		delete images[i];
 	}
 }

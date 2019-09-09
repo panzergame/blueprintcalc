@@ -1,17 +1,19 @@
 #include <QGridLayout>
 #include <QKeyEvent>
 
-#include <3dview.h>
-#include <imageview.h>
-#include <alignment.h>
-#include <window.h>
+#include <view/space.h>
+#include <view/image.h>
+#include <view/window.h>
+
+namespace View
+{
 
 void Window::keyPressEvent(QKeyEvent *event)
 {
 	switch (event->key()) {
 		case Qt::Key_A:
 		{
-			Alignment::singleton.align();
+			Core::Alignment::singleton.align();
 			break;
 		}
 		default:
@@ -22,16 +24,16 @@ void Window::keyPressEvent(QKeyEvent *event)
 	}
 }
 
-Window::Window(View3D *view3D, InfoView *infoView, ImageView *views[ImageViewType::MAX])
+Window::Window(Space *space, Info *info, Image *images[Core::ImageType::MAX])
 {
 	QGridLayout *layout = new QGridLayout();
 // 	QHBoxLayout *layout = new QHBoxLayout();
 
-	layout->addWidget(views[ImageViewType::FRONT], 0, 0);
-	layout->addWidget(views[ImageViewType::BACK], 0, 3);
-	layout->addWidget(views[ImageViewType::SIDE], 0, 1, 1, 2);
-	layout->addWidget(views[ImageViewType::TOP], 1, 0, 1, 2);
-	layout->addWidget(view3D, 1, 2, 1, 2);
+	layout->addWidget(images[Core::ImageType::FRONT], 0, 0);
+	layout->addWidget(images[Core::ImageType::BACK], 0, 3);
+	layout->addWidget(images[Core::ImageType::SIDE], 0, 1, 1, 2);
+	layout->addWidget(images[Core::ImageType::TOP], 1, 0, 1, 2);
+	layout->addWidget(space, 1, 2, 1, 2);
 
 	layout->setColumnStretch(0, 1);
 	layout->setColumnStretch(1, 1);
@@ -46,5 +48,11 @@ Window::Window(View3D *view3D, InfoView *infoView, ImageView *views[ImageViewTyp
 
 	setLayout(layout);
 
-	show();
+	showMaximized();
 }
+
+Window::~Window()
+{
+}
+
+};

@@ -2,9 +2,10 @@
 
 #include <QCommandLineParser>
 
-#include <array>
+class QApplication;
 
-#include <enums.h>
+namespace Control
+{
 
 class CommandLine : public QCommandLineParser
 {
@@ -12,4 +13,6 @@ public:
 	CommandLine(const QApplication &app);
 
 	QStringList GetImageNames() const;
+};
+
 };

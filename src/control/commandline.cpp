@@ -1,6 +1,9 @@
 #include <QApplication>
 
-#include <commandline.h>
+#include <control/commandline.h>
+
+namespace Control
+{
 
 CommandLine::CommandLine(const QApplication &app)
 	:QCommandLineParser()
@@ -17,3 +20,5 @@ QStringList CommandLine::GetImageNames() const
 {
 	return positionalArguments();
 }
+
+};
