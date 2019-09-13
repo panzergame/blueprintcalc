@@ -9,7 +9,7 @@ namespace View
 
 class Space;
 class Info;
-class Image;
+class BlueprintView;
 
 class Window : public QWidget
 {
@@ -19,7 +19,7 @@ protected Q_SLOTS:
 	void keyPressEvent(QKeyEvent *event) override;
 
 public:
-	Window(Space *space, Info *info, Image *images[Core::ImageType::MAX]);
+	Window(Space *space, Info *info, BlueprintView *views[Core::ImageType::MAX]);
 	~Window();
 };
 

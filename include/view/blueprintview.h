@@ -3,27 +3,26 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 
-#include <map>
-
 #include <core/enums.h>
 #include <core/alignment.h>
+#include <control/blueprintview.h>
 
 namespace View
 {
 
-class Image : public QGraphicsView
+class BlueprintView : public QGraphicsView
 {
 private:
 	Core::ImageType::Type m_viewType;
-	std::map<QGraphicsEllipseItem *, Core::Intersection::Point *> m_ellipseToPoint;
+	Control::BlueprintView m_control;
 
 protected Q_SLOTS:
 	void wheelEvent(QWheelEvent *event) override;
 	void mousePressEvent(QMouseEvent *event) override;
 
 public:
-	explicit Image(const QString &imageFileName, Core::ImageType::Type viewType, QWidget *parent=nullptr);
-	virtual ~Image();
+	BlueprintView(const QString &imageFileName, Core::ImageType::Type viewType, QWidget *parent=nullptr);
+	virtual ~BlueprintView();
 };
 
 };

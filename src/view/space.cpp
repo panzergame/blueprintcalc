@@ -12,8 +12,9 @@
 #include <Qt3DCore/QEntity>
 #include <Qt3DCore/QTransform>
 
+#include <core/alignment.h>
 #include <view/space.h>
-#include <control/selector.h>
+#include <control/blueprint.h>
 #include <render/plane.h>
 #include <render/point2d.h>
 
@@ -60,7 +61,7 @@ Space::Space(const QStringList &imageNames, QWidget *parent)
 	m_root(new Qt3DCore::QEntity)
 {
 	// Écoute des ajouts de points
-	connect(&Control::Selector::singleton, &Control::Selector::pointAdded, this, &Space::addPoint);
+	connect(&Control::Blueprint::singleton, &Control::Blueprint::pointAdded, this, &Space::addPoint);
 
 	// Écoute de tous les ajouts de pair
 	for (Core::IntersectionType::Type intersectionType : Core::IntersectionType::ALL) {
@@ -121,7 +122,7 @@ void Space::setupCamera()
 	camController->setCamera(camera);
 }
 
-void Space::addPoint(Core::ImageType::Type viewType, Core::Intersection::Point *point)
+void Space::addPoint(Core::ImageType::Type viewType, Core::Point *point)
 {
 	qInfo() << "point 3d";
 
@@ -137,8 +138,8 @@ void Space::addPair(Core::IntersectionType::Type intersectionType, const Core::I
 		Render::Plane *selfPlane = m_planes[selfType];
 		Render::Plane *otherPlane = m_planes[otherType];
 
-		const QVector3D selfPoint = selfPlane->mapToPlane(pair.point[i]->pos);
-		const QVector3D otherPoint = otherPlane->mapToPlane(pair.point[(i + 1) % 2]->pos);
+		const QVector3D selfPoint = selfPlane->mapToPlane(pair.point[i]->position());
+		const QVector3D otherPoint = otherPlane->mapToPlane(pair.point[(i + 1) % 2]->position());
 
 		const float y = QVector3D::dotProduct(yaxes[selfType][otherType], otherPoint);
 

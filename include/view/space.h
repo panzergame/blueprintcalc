@@ -30,7 +30,7 @@ public:
 	virtual ~Space();
 
 public Q_SLOTS:
-	void addPoint(Core::ImageType::Type viewType, Core::Intersection::Point *point);
+	void addPoint(Core::ImageType::Type viewType, Core::Point *point);
 };
 
 };

@@ -2,29 +2,28 @@
 #include <QWheelEvent>
 #include <QGraphicsItem>
 
-#include <view/image.h>
-#include <control/selector.h>
+#include <blueprint/point.h>
+#include <control/blueprint.h>
+#include <view/blueprintview.h>
 
 namespace View
 {
 
-void Image::mousePressEvent(QMouseEvent* event)
+void BlueprintView::mousePressEvent(QMouseEvent* event)
 {
 	const QPointF pos = mapToScene(event->pos());
 
 	if (event->button() == Qt::LeftButton && event->modifiers() == Qt::ControlModifier) {
-
-		Core::Intersection::Point *point = Control::Selector::singleton.newPoint(m_viewType, pos);
+		Core::Point *point = Control::Blueprint::singleton.newPoint(m_viewType, pos);
 
 		if (point) {
-			static const float rad = 1.0f;
+			constexpr float rad = 1.0f;
 			QGraphicsEllipseItem *ellipse = scene()->addEllipse(-rad, -rad, rad * 2.0f, rad * 2.0f);
 			QTransform t;
 			t.translate(pos.x(), pos.y());
 			ellipse->setTransform(t);
 
-			// Association vue modèle.
-			m_ellipseToPoint[ellipse] = point;
+			Blueprint::Point *bppoint = new Blueprint::Point(ellipse, point);
 		}
 	}
 	else if (event->button() == Qt::RightButton) {
@@ -38,7 +37,7 @@ void Image::mousePressEvent(QMouseEvent* event)
 	}
 }
 
-void Image::wheelEvent(QWheelEvent* event)
+void BlueprintView::wheelEvent(QWheelEvent* event)
 {
 	if (event->delta() > 0) {
 		scale(1.2f, 1.2f);
@@ -48,7 +47,7 @@ void Image::wheelEvent(QWheelEvent* event)
 	}
 }
 
-Image::Image(const QString &name, Core::ImageType::Type viewType, QWidget *parent)
+BlueprintView::BlueprintView(const QString &name, Core::ImageType::Type viewType, QWidget *parent)
 	:QGraphicsView(new QGraphicsScene(), parent),
 	m_viewType(viewType)
 {
@@ -59,7 +58,7 @@ Image::Image(const QString &name, Core::ImageType::Type viewType, QWidget *paren
 	scene()->addPixmap(pixmap);
 }
 
-Image::~Image()
+BlueprintView::~BlueprintView()
 {
 	delete scene();
 	setScene(nullptr);

@@ -1,7 +1,8 @@
 #pragma once
 
-#include <QPointF>
 #include <QObject>
+
+#include <core/point.h>
 
 namespace Core
 {
@@ -11,11 +12,6 @@ class Intersection : public QObject
 	Q_OBJECT
 
 public:
-	struct Point
-	{
-		QPointF pos;
-	};
-
 	struct Pair
 	{
 		Point *point[2];

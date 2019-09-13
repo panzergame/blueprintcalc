@@ -17,7 +17,7 @@ private:
 	void updatePosition(const QPointF& pos);
 
 public:
-	Point2d(Plane *plane, Core::Intersection::Point *point);
+	Point2d(Plane *plane, Core::Point *point);
 
 public Q_SLOTS:
 	void positionUpdate(const QPointF& pos);

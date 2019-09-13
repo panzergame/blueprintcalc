@@ -1,17 +1,18 @@
-#include <control/selector.h>
+#include <control/blueprint.h>
+#include <core/alignment.h>
 
 namespace Control
 {
 
-Selector::Selector()
+Blueprint::Blueprint()
 {
 }
 
-Selector::~Selector()
+Blueprint::~Blueprint()
 {
 }
 
-Core::Intersection::Point *Selector::newPoint(Core::ImageType::Type viewType, const QPointF& pos)
+Core::Point *Blueprint::newPoint(Core::ImageType::Type viewType, const QPointF& pos)
 {
 	if (!m_selections.empty()) {
 		// Test si les vues séléctionné forment une intersection valide
@@ -27,8 +28,7 @@ Core::Intersection::Point *Selector::newPoint(Core::ImageType::Type viewType, co
 	qInfo() << "new point";
 
 	// Ajout du nouveau point à l'intersection de la tache actuelle
-	Core::Intersection::Point *point = new Core::Intersection::Point;
-	point->pos = pos;
+	Core::Point *point = new Core::Point(pos);
 
 	emit pointAdded(viewType, point);
 
