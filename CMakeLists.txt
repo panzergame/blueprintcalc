@@ -6,6 +6,9 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
+set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -g -O0")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -g -O0")
+
 if(CMAKE_VERSION VERSION_LESS "3.7.0")
     set(CMAKE_INCLUDE_CURRENT_DIR ON)
 endif()
@@ -23,6 +26,7 @@ add_executable(blueprintcalc
 
     src/blueprint/point.cpp
     src/control/blueprint.cpp
+    src/control/blueprintview.cpp
     src/control/commandline.cpp
     src/core/alignment.cpp
     src/core/point.cpp
@@ -37,6 +41,7 @@ add_executable(blueprintcalc
 
     include/blueprint/point.h
     include/control/blueprint.h
+    include/control/blueprintview.h
     include/control/commandline.h
     include/core/alignment.h
     include/core/point.h

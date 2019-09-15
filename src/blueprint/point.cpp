@@ -8,7 +8,7 @@ namespace Blueprint
 Point::Point(QGraphicsEllipseItem *item, Core::Point *point)
 	:m_item(item)
 {
-	connect(this, &Point::updatePosition, point, &Core::Point::positionModified);
+	connect(point, &Core::Point::positionModified, this, &Point::updatePosition);
 }
 
 void Point::updatePosition(const QPointF& pos)
