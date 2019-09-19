@@ -2,7 +2,7 @@
 
 #include <QWidget>
 
-#include <core/enums.h>
+#include <core/constants.h>
 
 namespace View
 {

@@ -13,7 +13,7 @@ void Window::keyPressEvent(QKeyEvent *event)
 	switch (event->key()) {
 		case Qt::Key_A:
 		{
-			Core::Alignment::singleton.align();
+			Core::Alignment::singleton->align();
 			break;
 		}
 		default:

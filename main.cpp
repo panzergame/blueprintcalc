@@ -8,6 +8,9 @@
 #include <view/info.h>
 #include <view/window.h>
 
+#include <core/alignment.h>
+
+#include <control/blueprint.h>
 #include <control/commandline.h>
 
 int main(int argc, char **argv)
@@ -16,6 +19,9 @@ int main(int argc, char **argv)
 
 	Control::CommandLine parser(app);
 	const QStringList imageNames = parser.GetImageNames();
+
+	Core::Alignment::initSingleton();
+	Control::Blueprint::initSingleton();
 
 	View::BlueprintView *views[Core::ImageType::MAX];
 	for (unsigned short i = 0; i < Core::ImageType::MAX; ++i) {

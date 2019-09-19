@@ -29,6 +29,7 @@ add_executable(blueprintcalc
     src/control/blueprintview.cpp
     src/control/commandline.cpp
     src/core/alignment.cpp
+    src/core/constants.cpp
     src/core/point.cpp
     src/core/intersection.cpp
     src/render/plane.cpp
@@ -44,6 +45,7 @@ add_executable(blueprintcalc
     include/control/blueprintview.h
     include/control/commandline.h
     include/core/alignment.h
+    include/core/constants.h
     include/core/point.h
     include/core/intersection.h
     include/render/plane.h

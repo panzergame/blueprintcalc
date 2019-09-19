@@ -4,7 +4,7 @@
 
 #include <singleton.h>
 #include <core/point.h>
-#include <core/enums.h>
+#include <core/constants.h>
 
 namespace Control
 {

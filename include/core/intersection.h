@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QObject>
+#include <QVector2D>
 
 #include <core/point.h>
 
@@ -21,9 +22,12 @@ private:
 	std::vector<Pair> m_pairs;
 	float m_scaling;
 	float m_translation;
+	/// Vecteur de l'axe d'intersection dans la base des deux images.
+	std::array<QVector2D, 2> m_directions;
 
 public:
-	Intersection();
+	Intersection() = default;
+	explicit Intersection(const std::array<QVector2D, 2>& directions);
 	virtual ~Intersection();
 
 	void addPair(const Pair& pair);

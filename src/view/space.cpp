@@ -21,13 +21,6 @@
 namespace View
 {
 
-static const std::array<QQuaternion, Core::ImageType::MAX> transforms = {
-	QQuaternion::fromAxisAndAngle(QVector3D(1.0f, 0.0f, 0.0f), -90.0f), // TOP
-	QQuaternion::fromAxisAndAngle(QVector3D(0.0f, 0.0f, 1.0f), 90.0f), // FRONT
-	QQuaternion::fromAxisAndAngle(QVector3D(0.0f, 0.0f, 1.0f), -90.0f), // BACK
-	QQuaternion::fromAxisAndAngle(QVector3D(0.0f, 0.0f, 1.0f), 0.0f) // SIDE
-};
-
 /** Calcule les axes Y de la base d'une image dans la base d'une autre
  * Seulement les axes entre des images en intersection
  */
@@ -41,8 +34,8 @@ static std::map<Core::ImageType::Type, std::map<Core::ImageType::Type, QVector3D
 
 		static const QVector3D axisY(0.0f, 1.0f, 0.0f);
 		// Transformation entre les deux images
-		const QQuaternion trans = transforms[imageB] *
-			transforms[imageA].inverted();
+		const QQuaternion trans = Core::ImageTransforms[imageB] *
+			Core::ImageTransforms[imageA].inverted();
 
 		map[imageA][imageB] = trans * axisY;
 		map[imageB][imageA] = trans.inverted() * axisY;
@@ -61,11 +54,11 @@ Space::Space(const QStringList &imageNames, QWidget *parent)
 	m_root(new Qt3DCore::QEntity)
 {
 	// Écoute des ajouts de points
-	connect(&Control::Blueprint::singleton, &Control::Blueprint::pointAdded, this, &Space::addPoint);
+	connect(Control::Blueprint::singleton, &Control::Blueprint::pointAdded, this, &Space::addPoint);
 
 	// Écoute de tous les ajouts de pair
 	for (Core::IntersectionType::Type intersectionType : Core::IntersectionType::ALL) {
-		Core::Intersection& intersection = Core::Alignment::singleton.getIntersection(intersectionType);
+		Core::Intersection& intersection = Core::Alignment::singleton->getIntersection(intersectionType);
 		connect(&intersection, &Core::Intersection::pairAdded, this,
 				[this, intersectionType](const Core::Intersection::Pair& pair){ this->addPair(intersectionType, pair); });
 	}
@@ -100,7 +93,7 @@ void Space::setupPlanes(const QStringList& imageNames)
 
 		// La transformation pour orienter le plan
 		Qt3DCore::QTransform *trans = new Qt3DCore::QTransform();
-		trans->setRotation(transforms[i]);
+		trans->setRotation(Core::ImageTransforms[i]);
 		node->addComponent(trans);
 
 		m_planes[i] = plane;

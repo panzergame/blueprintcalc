@@ -3,7 +3,7 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 
-#include <core/enums.h>
+#include <core/constants.h>
 #include <core/alignment.h>
 #include <control/blueprintview.h>
 

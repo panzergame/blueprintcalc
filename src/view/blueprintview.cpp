@@ -15,7 +15,7 @@ void BlueprintView::mousePressEvent(QMouseEvent* event)
 	const QPointF pos = mapToScene(event->pos());
 
 	if (event->button() == Qt::LeftButton && event->modifiers() == Qt::ControlModifier) {
-		Core::Point *point = Control::Blueprint::singleton.newPoint(m_viewType, pos);
+		Core::Point *point = Control::Blueprint::singleton->newPoint(m_viewType, pos);
 
 		// Ajout du point pour pouvoir le selectionner plus tard.
 		m_control.addPoint(point);

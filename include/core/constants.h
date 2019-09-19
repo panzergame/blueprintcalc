@@ -1,11 +1,21 @@
 #pragma once
 
 #include <QDebug>
+#include <QVector3D>
+#include <QQuaternion>
 
 #include <array>
 
 namespace Core
 {
+
+/*
+ * Z : haut
+ * X : arrière
+ * Y : gauche
+ *
+ * plan orienté du côté gauche (Y)
+ */
 
 namespace ImageType
 {
@@ -26,6 +36,13 @@ namespace ImageType
 	};
 };
 
+static const std::array<QQuaternion, Core::ImageType::MAX> ImageTransforms = {
+	QQuaternion::fromAxisAndAngle(QVector3D(1.0f, 0.0f, 0.0f), -90.0f), // TOP
+	QQuaternion::fromAxisAndAngle(QVector3D(0.0f, 0.0f, 1.0f), 90.0f), // FRONT
+	QQuaternion::fromAxisAndAngle(QVector3D(0.0f, 0.0f, 1.0f), -90.0f), // BACK
+	QQuaternion::fromAxisAndAngle(QVector3D(0.0f, 0.0f, 1.0f), 0.0f) // SIDE
+};
+
 namespace AxisType
 {
 	enum Type {
@@ -44,6 +61,7 @@ namespace IntersectionType
 	{
 		short index;
 		std::array<ImageType::Type, 2> imageViews;
+		QVector3D axis;
 
 		inline bool operator==(const Type& other) const
 		{
@@ -51,12 +69,12 @@ namespace IntersectionType
 		}
 	};
 
-	constexpr Type FRONT_SIDE{0, {ImageType::FRONT, ImageType::SIDE}};
-	constexpr Type FRONT_TOP{1, {ImageType::FRONT, ImageType::TOP}};
-	constexpr Type BACK_SIDE{2, {ImageType::BACK, ImageType::SIDE}};
-	constexpr Type BACK_TOP{3, {ImageType::BACK, ImageType::TOP}};
-	constexpr Type SIDE_TOP{4, {ImageType::SIDE, ImageType::TOP}};
-	constexpr Type NONE{-1, {ImageType::NONE, ImageType::NONE}};
+	constexpr Type FRONT_SIDE{0, {ImageType::FRONT, ImageType::SIDE}, QVector3D(0.0f, 0.0f, 1.0f)};
+	constexpr Type FRONT_TOP{1, {ImageType::FRONT, ImageType::TOP}, QVector3D(0.0f, 1.0f, 0.0f)};
+	constexpr Type BACK_SIDE{2, {ImageType::BACK, ImageType::SIDE}, QVector3D(0.0f, 0.0f, 1.0f)};
+	constexpr Type BACK_TOP{3, {ImageType::BACK, ImageType::TOP}, QVector3D(0.0f, 1.0f, 0.0f)};
+	constexpr Type SIDE_TOP{4, {ImageType::SIDE, ImageType::TOP}, QVector3D(1.0f, 0.0f, 0.0f)};
+	constexpr Type NONE{-1, {ImageType::NONE, ImageType::NONE}, QVector3D()};
 
 	constexpr unsigned short MAX = 5;
 

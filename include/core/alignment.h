@@ -5,7 +5,7 @@
 #include <array>
 
 #include <singleton.h>
-#include <core/enums.h>
+#include <core/constants.h>
 #include <core/intersection.h>
 
 namespace Core

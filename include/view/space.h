@@ -5,7 +5,7 @@
 #include <Qt3DExtras/Qt3DWindow>
 
 #include <core/intersection.h>
-#include <core/enums.h>
+#include <core/constants.h>
 #include <render/plane.h>
 
 namespace View
