@@ -1,4 +1,7 @@
 #include <QApplication>
+#include <QDebug>
+
+#include <stdlib.h>
 
 #include <control/commandline.h>
 
@@ -14,6 +17,13 @@ CommandLine::CommandLine(const QApplication &app)
 	addPositionalArgument("side", QApplication::translate("main", "Side image"));
 
 	process(app);
+
+	// beuuhh
+	if (positionalArguments().size() < 4) {
+		qCritical() << "Too few arguments";
+
+		exit(1);
+	}
 }
 
 QStringList CommandLine::GetImageNames() const

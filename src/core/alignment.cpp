@@ -15,22 +15,22 @@ Alignment::Alignment()
 		std::array<QVector3D, 2> directions;
 		for (unsigned short j = 0; j < 2; ++j) {
 			directions[j] = ImageTransforms[intersectionType.imageViews[j]] * intersectionType.axis;
-			qInfo() << intersectionType.imageViews[j] << ImageTransforms[intersectionType.imageViews[j]] << ImageType::NAMES[intersectionType.imageViews[j]] << directions[j];
+// 			qInfo() << intersectionType.imageViews[j] << ImageTransforms[intersectionType.imageViews[j]] << ImageType::NAMES[intersectionType.imageViews[j]] << directions[j];
 		}
 
-// 		m_intersections[i] = Intersection();
+		m_intersections[i] = new Core::Intersection(directions);
 	}
 }
 
-Intersection &Alignment::getIntersection(IntersectionType::Type type)
+Intersection *Alignment::getIntersection(IntersectionType::Type type)
 {
 	return m_intersections[type.index];
 }
 
 void Alignment::align()
 {
-	for (Intersection& intersection : m_intersections) {
-		intersection.align();
+	for (Intersection *intersection : m_intersections) {
+		intersection->align();
 	}
 }
 

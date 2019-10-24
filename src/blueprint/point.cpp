@@ -13,7 +13,7 @@ Point::Point(QGraphicsEllipseItem *item, Core::Point *point)
 
 void Point::updatePosition(const QPointF& pos)
 {
-	QTransform t; // TODO
+	QTransform t;
 	t.translate(pos.x(), pos.y());
 	m_item->setTransform(t);
 }

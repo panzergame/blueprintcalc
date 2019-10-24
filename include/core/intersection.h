@@ -23,18 +23,18 @@ private:
 	float m_scaling;
 	float m_translation;
 	/// Vecteur de l'axe d'intersection dans la base des deux images.
-	std::array<QVector2D, 2> m_directions;
+	std::array<QVector3D, 2> m_directions;
 
 public:
-	Intersection() = default;
-	explicit Intersection(const std::array<QVector2D, 2>& directions);
+	explicit Intersection(const std::array<QVector3D, 2>& directions);
 	virtual ~Intersection();
 
 	void addPair(const Pair& pair);
 	void align();
 
 Q_SIGNALS:
-	void transformChanged(float scaling, float translation);
+	void transformChangedDirection1(float scaling, float translation, const QVector3D& direction);
+	void transformChangedDirection2(float scaling, float translation, const QVector3D& direction);
 	void pairAdded(const Pair& pair);
 };
 

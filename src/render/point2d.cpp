@@ -4,11 +4,12 @@
 namespace Render
 {
 
-Point2d::Point2d(Plane *plane, Core::Point *point) // TODO signaux (slot)
+Point2d::Point2d(Plane *plane, Core::Point *point)
 	:Point(plane),
 	m_plane(plane)
 {
 	updatePosition(point->position());
+	connect(point, &Core::Point::positionModified, this, &Point2d::updatePosition);
 }
 
 void Point2d::updatePosition(const QPointF& pos)

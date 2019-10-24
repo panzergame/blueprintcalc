@@ -5,7 +5,7 @@
 namespace Core
 {
 
-Intersection::Intersection(const std::array<QVector2D, 2>& directions)
+Intersection::Intersection(const std::array<QVector3D, 2>& directions)
 	:m_scaling(1.0f),
 	m_translation(0.0f),
 	m_directions(directions)
@@ -58,7 +58,11 @@ void Intersection::align()
 	const float s = (2 * c1 * c3 - c4 * c5) / d;
 	const float t = -(c3 * c4 - 2 * c2 * c5) / d;
 
-	emit transformChanged(s, t);
+	const float hs = s / 2.0f;
+	const float ht = t / 2.0f;
+
+	emit transformChangedDirection1(hs, ht, m_directions[0]);
+	emit transformChangedDirection2(hs, ht, m_directions[1]);
 }
 
 };

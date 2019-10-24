@@ -8,7 +8,7 @@
 namespace Render
 {
 
-class Point : public Qt3DCore::QEntity
+class Line : public Qt3DCore::QEntity
 {
 private:
 	void setupGeometry();
@@ -17,7 +17,7 @@ protected:
 	Qt3DCore::QTransform *m_transform;
 
 public:
-	Point(Qt3DCore::QEntity *root);
+	Line(Qt3DCore::QEntity *root);
 };
 
 };

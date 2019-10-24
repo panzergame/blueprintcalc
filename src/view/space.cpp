@@ -17,6 +17,7 @@
 #include <control/blueprint.h>
 #include <render/plane.h>
 #include <render/point2d.h>
+#include <render/point3d.h>
 
 namespace View
 {
@@ -98,6 +99,13 @@ void Space::setupPlanes(const QStringList& imageNames)
 
 		m_planes[i] = plane;
 	}
+
+	// Signaux pour aligner les images.
+	for (Core::IntersectionType::Type intersectionType : Core::IntersectionType::ALL) {
+		const Core::Intersection& intersection = Core::Alignment::singleton->getIntersection(intersectionType);
+
+		// TODO fixer des axes de certaines images
+	}
 }
 
 void Space::setupCamera()
@@ -124,23 +132,28 @@ void Space::addPoint(Core::ImageType::Type viewType, Core::Point *point)
 
 void Space::addPair(Core::IntersectionType::Type intersectionType, const Core::Intersection::Pair& pair)
 {
+	std::array<Render::Point3d *, 2> points;
+
 	for (unsigned short i = 0; i < 2; ++i) {
+		// Indice de l'autre plan/point
+		const unsigned short j = (i + 1) % 2;
+
 		const Core::ImageType::Type selfType = intersectionType.imageViews[i];
-		const Core::ImageType::Type otherType = intersectionType.imageViews[(i + 1) % 2];
+		const Core::ImageType::Type otherType = intersectionType.imageViews[j];
 
 		Render::Plane *selfPlane = m_planes[selfType];
 		Render::Plane *otherPlane = m_planes[otherType];
 
-		const QVector3D selfPoint = selfPlane->mapToPlane(pair.point[i]->position());
-		const QVector3D otherPoint = otherPlane->mapToPlane(pair.point[(i + 1) % 2]->position());
+		Core::Point *selfPoint = pair.point[i];
+		Core::Point *otherPoint = pair.point[j];
 
-		const float y = QVector3D::dotProduct(yaxes[selfType][otherType], otherPoint);
+		Render::Point3d *point = new Render::Point3d(selfPlane, otherPlane,
+				selfPoint, otherPoint, yaxes[selfType][otherType]);
 
-		const QVector3D point(selfPoint.x(), -y, selfPoint.z());
-		qInfo() << point;
-
-// 		selfPlane->addPairPoint(point);
+		points[i] = point;
 	}
+
+// 	Render::PointGap *gap = new PointGap(points);
 }
 
 };

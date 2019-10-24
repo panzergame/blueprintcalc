@@ -34,6 +34,7 @@ add_executable(blueprintcalc
     src/core/intersection.cpp
     src/render/plane.cpp
     src/render/point2d.cpp
+    src/render/point3d.cpp
     src/render/point.cpp
     src/view/blueprintview.cpp
     src/view/info.cpp
@@ -50,6 +51,7 @@ add_executable(blueprintcalc
     include/core/intersection.h
     include/render/plane.h
     include/render/point2d.h
+    include/render/point3d.h
     include/render/point.h
     include/singleton.h
     include/view/blueprintview.h
