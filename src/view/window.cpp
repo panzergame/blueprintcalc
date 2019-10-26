@@ -1,5 +1,6 @@
 #include <QGridLayout>
 #include <QKeyEvent>
+#include <QShortcut>
 
 #include <view/space.h>
 #include <view/blueprintview.h>
@@ -8,23 +9,12 @@
 namespace View
 {
 
-void Window::keyPressEvent(QKeyEvent *event)
+void Window::shortcutAlignEvent()
 {
-	switch (event->key()) {
-		case Qt::Key_A:
-		{
-			Core::Alignment::singleton->align();
-			break;
-		}
-		default:
-		{
-			QWidget::keyPressEvent(event);
-			break;
-		}
-	}
+	Core::Alignment::singleton->align();
 }
 
-Window::Window(Space *space, Info *info, BlueprintView *views[Core::ImageType::MAX])
+void Window::setupUi(Space *space, Info *info, BlueprintView *views[Core::ImageType::MAX])
 {
 	QGridLayout *layout = new QGridLayout();
 // 	QHBoxLayout *layout = new QHBoxLayout();
@@ -50,8 +40,23 @@ Window::Window(Space *space, Info *info, BlueprintView *views[Core::ImageType::M
 	showMaximized();
 }
 
+void Window::setupShortcuts()
+{
+	m_shortcutAlign = new QShortcut(this);
+	m_shortcutAlign->setKey(Qt::CTRL + Qt::Key_A);
+
+	connect(m_shortcutAlign, &QShortcut::activated, this, &Window::shortcutAlignEvent);
+}
+
+Window::Window(Space *space, Info *info, BlueprintView *views[Core::ImageType::MAX])
+{
+	setupUi(space, info, views);
+	setupShortcuts();
+}
+
 Window::~Window()
 {
+	delete m_shortcutAlign;
 }
 
 };
