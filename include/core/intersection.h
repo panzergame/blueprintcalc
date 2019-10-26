@@ -2,6 +2,9 @@
 
 #include <QObject>
 #include <QVector2D>
+#include <QVector3D>
+
+#include <array>
 
 #include <core/point.h>
 

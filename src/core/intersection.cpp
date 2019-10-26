@@ -41,8 +41,8 @@ void Intersection::align()
 		const QPointF posa = pair.point[0]->position();
 		const QPointF posb = pair.point[1]->position();
 
-		const float a = QVector2D::dotProduct(m_directions[0], QVector2D(posa));
-		const float b = QVector2D::dotProduct(m_directions[1], QVector2D(posb));
+		const float a = QVector3D::dotProduct(m_directions[0], QVector2D(posa).toVector3D());
+		const float b = QVector3D::dotProduct(m_directions[1], QVector2D(posb).toVector3D());
 
 		// TODO pas * 2
 		c2 += b * b;

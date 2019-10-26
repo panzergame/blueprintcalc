@@ -43,7 +43,6 @@ Window::Window(Space *space, Info *info, BlueprintView *views[Core::ImageType::M
 	layout->setRowStretch(0, 1);
 	layout->setRowStretch(1, 1);
 
-
 // 	layout->addWidget(view3D);
 
 	setLayout(layout);

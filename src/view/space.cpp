@@ -59,8 +59,8 @@ Space::Space(const QStringList &imageNames, QWidget *parent)
 
 	// Écoute de tous les ajouts de pair
 	for (Core::IntersectionType::Type intersectionType : Core::IntersectionType::ALL) {
-		Core::Intersection& intersection = Core::Alignment::singleton->getIntersection(intersectionType);
-		connect(&intersection, &Core::Intersection::pairAdded, this,
+		Core::Intersection *intersection = Core::Alignment::singleton->getIntersection(intersectionType);
+		connect(intersection, &Core::Intersection::pairAdded, this,
 				[this, intersectionType](const Core::Intersection::Pair& pair){ this->addPair(intersectionType, pair); });
 	}
     
@@ -102,7 +102,7 @@ void Space::setupPlanes(const QStringList& imageNames)
 
 	// Signaux pour aligner les images.
 	for (Core::IntersectionType::Type intersectionType : Core::IntersectionType::ALL) {
-		const Core::Intersection& intersection = Core::Alignment::singleton->getIntersection(intersectionType);
+		const Core::Intersection *intersection = Core::Alignment::singleton->getIntersection(intersectionType);
 
 		// TODO fixer des axes de certaines images
 	}
