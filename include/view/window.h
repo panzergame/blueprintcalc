@@ -2,6 +2,8 @@
 
 #include <QWidget>
 
+#include <memory>
+
 #include <core/constants.h>
 
 class QShortcut;
@@ -17,7 +19,7 @@ class Window : public QWidget
 {
 	Q_OBJECT
 private:
-	QShortcut *m_shortcutAlign;
+	std::unique_ptr<QShortcut> m_shortcutAlign;
 
 	void setupUi(Space *space, Info *info, BlueprintView *views[Core::ImageType::MAX]);
 	void setupShortcuts();

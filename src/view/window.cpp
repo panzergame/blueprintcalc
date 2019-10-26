@@ -42,10 +42,10 @@ void Window::setupUi(Space *space, Info *info, BlueprintView *views[Core::ImageT
 
 void Window::setupShortcuts()
 {
-	m_shortcutAlign = new QShortcut(this);
+	m_shortcutAlign.reset(new QShortcut(this));
 	m_shortcutAlign->setKey(Qt::CTRL + Qt::Key_A);
 
-	connect(m_shortcutAlign, &QShortcut::activated, this, &Window::shortcutAlignEvent);
+	connect(m_shortcutAlign.get(), &QShortcut::activated, this, &Window::shortcutAlignEvent);
 }
 
 Window::Window(Space *space, Info *info, BlueprintView *views[Core::ImageType::MAX])
@@ -56,7 +56,6 @@ Window::Window(Space *space, Info *info, BlueprintView *views[Core::ImageType::M
 
 Window::~Window()
 {
-	delete m_shortcutAlign;
 }
 
 };
