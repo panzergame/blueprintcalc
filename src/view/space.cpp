@@ -105,6 +105,7 @@ void Space::setupPlanes(const QStringList& imageNames)
 		const Core::Intersection *intersection = Core::Alignment::singleton->getIntersection(intersectionType);
 
 		// TODO fixer des axes de certaines images
+		m_planes[intersectionType.imageViews[0]];
 	}
 }
 

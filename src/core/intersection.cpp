@@ -26,9 +26,12 @@ void Intersection::addPair(const Pair& pair)
 void Intersection::align()
 {
 	qInfo() << "align";
-	// magie magie !
 
 	const unsigned int n = m_pairs.size();
+
+	if (n == 0) {
+		return;
+	}
 
 	const float c1 = n;
 	float c2 = 0.0f;
@@ -41,15 +44,15 @@ void Intersection::align()
 		const QPointF posa = pair.point[0]->position();
 		const QPointF posb = pair.point[1]->position();
 
-		const float a = QVector3D::dotProduct(m_directions[0], QVector2D(posa).toVector3D());
-		const float b = QVector3D::dotProduct(m_directions[1], QVector2D(posb).toVector3D());
+		const float a = QVector3D::dotProduct(m_directions[0], QVector3D(posa.x(), 0.0f, posa.y()));
+		const float b = QVector3D::dotProduct(m_directions[1], QVector3D(posb.x(), 0.0f, posb.y()));
+		qInfo() << "pair" << a << b << posa << posb;
 
 		// TODO pas * 2
 		c2 += b * b;
 		c3 += 2.0f * a * b;
 		c4 += 2.0f * b;
 		c5 += 2.0f * a;
-		
 	}
 
 	// Recherche du minimum (le seul point critique)
@@ -58,11 +61,14 @@ void Intersection::align()
 	const float s = (2 * c1 * c3 - c4 * c5) / d;
 	const float t = -(c3 * c4 - 2 * c2 * c5) / d;
 
+	// Half of the transforms
 	const float hs = s / 2.0f;
 	const float ht = t / 2.0f;
 
 	emit transformChangedDirection1(hs, ht, m_directions[0]);
 	emit transformChangedDirection2(hs, ht, m_directions[1]);
+
+	qInfo() << hs << ht;
 }
 
 };
