@@ -19,6 +19,8 @@ namespace Core
 namespace ImageType
 {
 
+	constexpr std::array<Type, MAX> ALL = {TOP, FRONT, BACK, SIDE};
+
 enum Type
 {
 	TOP = 0,
@@ -37,22 +39,7 @@ static const std::array<QQuaternion, Core::ImageType::MAX> ImageTransforms = {
 	QQuaternion::fromAxisAndAngle(QVector3D(1.0f, 0.0f, 0.0f), -90.0f), // TOP
 	QQuaternion::fromAxisAndAngle(QVector3D(0.0f, 0.0f, 1.0f), 90.0f),  // FRONT
 	QQuaternion::fromAxisAndAngle(QVector3D(0.0f, 0.0f, 1.0f), -90.0f), // BACK
-	QQuaternion::fromAxisAndAngle(QVector3D(0.0f, 0.0f, 1.0f), 0.0f)	// SIDE
-};
-
-namespace AxisType
-{
-
-enum Type
-{
-	PX,
-	PY,
-	PZ,
-	NX,
-	NY,
-	NZ
-};
-
+	QQuaternion::fromAxisAndAngle(QVector3D(0.0f, 0.0f, 1.0f), 0.0f)    // SIDE
 };
 
 namespace IntersectionType

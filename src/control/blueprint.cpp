@@ -1,5 +1,6 @@
 #include <control/blueprint.h>
-#include <core/alignment.h>
+#include <core/blueprint.h>
+#include <core/intersection.h>
 
 namespace Control
 {
@@ -47,7 +48,7 @@ Core::Point *Blueprint::newPoint(Core::ImageType::Type viewType, const QPointF& 
 			Core::Intersection::Pair{m_selections[0].point, m_selections[1].point};
 
 		qInfo() << "new pair";
-		Core::Alignment::singleton->getIntersection(intersectionType)->addPair(pair);
+		Core::Blueprint::singleton->getIntersection(intersectionType)->addPair(pair);
 
 		m_selections.clear();
 	}

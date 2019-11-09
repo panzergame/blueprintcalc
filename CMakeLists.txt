@@ -28,7 +28,8 @@ add_executable(blueprintcalc
     src/control/blueprint.cpp
     src/control/blueprintview.cpp
     src/control/commandline.cpp
-    src/core/alignment.cpp
+    src/core/blueprint.cpp
+    src/core/blueprintview.cpp
     src/core/constants.cpp
     src/core/point.cpp
     src/core/intersection.cpp
@@ -36,6 +37,7 @@ add_executable(blueprintcalc
     src/render/point2d.cpp
     src/render/point3d.cpp
     src/render/point.cpp
+    src/render/scene.cpp
     src/view/blueprintview.cpp
     src/view/info.cpp
     src/view/space.cpp
@@ -45,7 +47,8 @@ add_executable(blueprintcalc
     include/control/blueprint.h
     include/control/blueprintview.h
     include/control/commandline.h
-    include/core/alignment.h
+    include/core/blueprint.h
+    include/core/blueprintview.h
     include/core/constants.h
     include/core/point.h
     include/core/intersection.h
@@ -53,6 +56,7 @@ add_executable(blueprintcalc
     include/render/point2d.h
     include/render/point3d.h
     include/render/point.h
+    include/render/scene.h
     include/singleton.h
     include/view/blueprintview.h
     include/view/info.h

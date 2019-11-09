@@ -2,25 +2,35 @@
 
 #include <Qt3DCore/QEntity>
 #include <Qt3DCore/QTransform>
-#include <core/intersection.h>
+#include <core/point.h>
+#include <core/blueprintview.h>
+
+#include <vector>
+#include <memory>
 
 namespace Render
 {
 
+class Point2d;
+
 class Plane : public Qt3DCore::QEntity
 {
 private:
+	QPointF m_imageSize;
+	Core::BlueprintView *m_blueprintView;
 	Qt3DCore::QTransform *m_transform;
-	QPointF m_size;
+
+	/// Tracked 2d points in plane
+	std::vector<std::unique_ptr<Point2d> > m_points;
 
 public:
-	Plane(const QString &imageName, Qt3DCore::QEntity *root);
+	Plane(const QString &imageName, Core::BlueprintView *view, Qt3DCore::QEntity *root);
 
 	QVector3D mapToPlane(const QPointF &pos) const;
 
 public Q_SLOTS:
-	void transformX(float scaling, float translation);
-	void transformY(float scaling, float translation);
+	void addPoint(Core::Point *point);
+	void updateTransform(const QQuaternion& transform);
 };
 
 };

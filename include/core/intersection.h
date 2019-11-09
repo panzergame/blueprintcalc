@@ -9,6 +9,8 @@
 namespace Core
 {
 
+class BlueprintView;
+
 class Intersection : public QObject
 {
 	Q_OBJECT
@@ -25,17 +27,18 @@ private:
 	float m_translation;
 	/// Vecteur de l'axe d'intersection dans la base des deux images.
 	std::array<QVector3D, 2> m_directions;
+	/// Les vues en intersection
+	std::array<BlueprintView *, 2> m_views;
 
 public:
-	explicit Intersection(const std::array<QVector3D, 2> &directions);
+	explicit Intersection(const std::array<QVector3D, 2> &directions,
+			const std::array<BlueprintView *, 2> &views);
 	virtual ~Intersection();
 
 	void addPair(const Pair &pair);
 	void align();
 
 Q_SIGNALS:
-	void transformChangedDirection1(float scaling, float translation, const QVector3D &direction);
-	void transformChangedDirection2(float scaling, float translation, const QVector3D &direction);
 	void pairAdded(const Pair &pair);
 };
 

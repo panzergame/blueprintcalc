@@ -11,7 +11,7 @@ namespace View
 
 void Window::shortcutAlignEvent()
 {
-	Core::Alignment::singleton->align();
+	Core::Blueprint::singleton->align();
 }
 
 void Window::setupUi(Space *space, Info *info, BlueprintView *views[Core::ImageType::MAX])

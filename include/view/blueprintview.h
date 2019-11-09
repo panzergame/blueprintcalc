@@ -3,7 +3,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <control/blueprintview.h>
-#include <core/alignment.h>
+#include <core/blueprint.h>
 #include <core/constants.h>
 
 namespace View
