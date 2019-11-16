@@ -74,10 +74,20 @@ inline Type Convert(ImageType::Type typeA, ImageType::Type typeB)
 			return intersectionType;
 		}
 	}
-
 	return NONE;
 }
 
 };
+
+namespace LockAxisType
+{
+	enum Type {
+		LOCK = 0,
+		UNLOCK,
+		MAX
+	};
+};
+
+// TODO template <> Core::Array2D | .x .y [i]
 
 };

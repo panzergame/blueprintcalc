@@ -30,7 +30,7 @@ public:
 
 public Q_SLOTS:
 	void addPoint(Core::Point *point);
-	void updateTransform(const QQuaternion& transform);
+	void updateTransform(const QMatrix4x4& transform);
 };
 
 };

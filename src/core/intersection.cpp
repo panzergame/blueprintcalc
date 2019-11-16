@@ -1,15 +1,15 @@
 #include <QDebug>
 
 #include <core/intersection.h>
+#include <core/blueprintview.h>
+#include <core/constants.h>
 
 namespace Core
 {
 
 Intersection::Intersection(const std::array<QVector3D, 2>& directions,
 		const std::array<BlueprintView *, 2> &views)
-	:m_scaling(1.0f),
-	m_translation(0.0f),
-	m_directions(directions),
+	:m_directions(directions),
 	m_views(views)
 {
 }
@@ -18,23 +18,9 @@ Intersection::~Intersection()
 {
 }
 
-void Intersection::addPair(const Pair& pair)
+Intersection::Transform Intersection::alignmentTransform() const
 {
-	m_pairs.push_back(pair);
-
-	emit pairAdded(pair);
-}
-
-void Intersection::align()
-{
-	qInfo() << "align";
-
 	const unsigned int n = m_pairs.size();
-
-	if (n == 0) {
-		return;
-	}
-
 	const float c1 = n;
 	float c2 = 0.0f;
 	float c3 = 0.0f;
@@ -63,13 +49,61 @@ void Intersection::align()
 	const float s = (2 * c1 * c3 - c4 * c5) / d;
 	const float t = -(c3 * c4 - 2 * c2 * c5) / d;
 
-	// Half of the transforms
-	const float hs = s / 2.0f;
-	const float ht = t / 2.0f;
+	qInfo() << s << t;
 
-	// TODO modifier vues
+	Transform transform{t, s};
 
-	qInfo() << hs << ht;
+	return transform;
+}
+
+std::array<QVector3D, 2> Intersection::viewWeightedDirection() const
+{
+	// Multiply view direction by it's freedom factors (weighted)
+	std::array<QVector3D, 2> directions = {
+		m_directions[0] * m_views[0]->freedomFactors(),
+		m_directions[1] * m_views[1]->freedomFactors()
+	};
+
+	// Make the sum of each axis equal to 1 (or 0).
+	for (unsigned short ai = 0; ai < 3; ++ai) {
+		float &a1 = directions[0][ai];
+		float &a2 = directions[1][ai];
+
+		const float sum = a1 + a2;
+		if (sum != 0.0f) {
+			a1 /= sum;
+			a2 /= sum;
+		}
+	}
+
+	return directions;
+}
+
+void Intersection::applyPlaneTransform(float weight, const QVector3D& direction, const Transform& transform)
+{
+}
+
+void Intersection::addPair(const Pair& pair)
+{
+	m_pairs.push_back(pair);
+
+	emit pairAdded(pair);
+}
+
+void Intersection::align()
+{
+	qInfo() << "align";
+
+	/*if (m_pairs.empty()) {
+		return;
+	}*/
+
+	const std::array<QVector3D, 2> weights = viewWeightedDirection();
+
+	/* TODO
+	 * calculer les facteurs d'influence sum() = 1
+	 * appliquer pour chaque vue selon sa direction dans la vue (m_directions).
+	 */
 }
 
 };

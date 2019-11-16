@@ -62,9 +62,9 @@ void Plane::addPoint(Core::Point *point)
 	m_points.emplace_back(point2d);
 }
 
-void Plane::updateTransform(const QQuaternion& transform)
+void Plane::updateTransform(const QMatrix4x4& transform)
 {
-	m_transform->setRotation(transform);
+	m_transform->setMatrix(transform);
 }
 
 };

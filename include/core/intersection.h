@@ -23,12 +23,21 @@ public:
 
 private:
 	std::vector<Pair> m_pairs;
-	float m_scaling;
-	float m_translation;
 	/// Vecteur de l'axe d'intersection dans la base des deux images.
 	std::array<QVector3D, 2> m_directions;
 	/// Les vues en intersection
 	std::array<BlueprintView *, 2> m_views;
+
+	// Transform between planes at intersection.
+	struct Transform
+	{
+		float translation;
+		float scale;
+	};
+
+	Transform alignmentTransform() const;
+	std::array<QVector3D, 2> viewWeightedDirection() const;
+	void applyPlaneTransform(float weight, const QVector3D& direction, const Transform& transform);
 
 public:
 	explicit Intersection(const std::array<QVector3D, 2> &directions,
