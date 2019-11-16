@@ -1,8 +1,7 @@
 #pragma once
 
-#include <Qt3DCore/QTransform>
 #include <Qt3DCore/QEntity>
-
+#include <Qt3DCore/QTransform>
 #include <core/intersection.h>
 
 namespace Render

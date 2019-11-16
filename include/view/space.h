@@ -1,11 +1,9 @@
 #pragma once
 
 #include <QWidget>
-
 #include <Qt3DExtras/Qt3DWindow>
-
-#include <core/intersection.h>
 #include <core/constants.h>
+#include <core/intersection.h>
 #include <render/plane.h>
 
 namespace View
@@ -20,13 +18,13 @@ private:
 	Qt3DCore::QEntity *m_root;
 	std::array<Render::Plane *, Core::ImageType::MAX> m_planes;
 
-	void setupPlanes(const QStringList& imageNames);
+	void setupPlanes(const QStringList &imageNames);
 	void setupCamera();
 
-	void addPair(Core::IntersectionType::Type intersectionType, const Core::Intersection::Pair& pair);
+	void addPair(Core::IntersectionType::Type intersectionType, const Core::Intersection::Pair &pair);
 
 public:
-	Space(const QStringList &imageNames, QWidget *parent=nullptr);
+	Space(const QStringList &imageNames, QWidget *parent = nullptr);
 	virtual ~Space();
 
 public Q_SLOTS:

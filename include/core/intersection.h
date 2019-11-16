@@ -3,9 +3,7 @@
 #include <QObject>
 #include <QVector2D>
 #include <QVector3D>
-
 #include <array>
-
 #include <core/point.h>
 
 namespace Core
@@ -29,16 +27,16 @@ private:
 	std::array<QVector3D, 2> m_directions;
 
 public:
-	explicit Intersection(const std::array<QVector3D, 2>& directions);
+	explicit Intersection(const std::array<QVector3D, 2> &directions);
 	virtual ~Intersection();
 
-	void addPair(const Pair& pair);
+	void addPair(const Pair &pair);
 	void align();
 
 Q_SIGNALS:
-	void transformChangedDirection1(float scaling, float translation, const QVector3D& direction);
-	void transformChangedDirection2(float scaling, float translation, const QVector3D& direction);
-	void pairAdded(const Pair& pair);
+	void transformChangedDirection1(float scaling, float translation, const QVector3D &direction);
+	void transformChangedDirection2(float scaling, float translation, const QVector3D &direction);
+	void pairAdded(const Pair &pair);
 };
 
 };

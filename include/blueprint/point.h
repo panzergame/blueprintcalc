@@ -1,7 +1,6 @@
 #pragma once
 
 #include <QObject>
-
 #include <core/point.h>
 
 class QGraphicsEllipseItem;
@@ -25,7 +24,7 @@ public:
 	Point(QGraphicsEllipseItem *item, Core::Point *point);
 
 protected Q_SLOTS:
-	void updatePosition(const QPointF& pos);
+	void updatePosition(const QPointF &pos);
 };
 
 };

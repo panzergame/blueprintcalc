@@ -1,9 +1,7 @@
 #pragma once
 
-#include <core/point.h>
-
 #include <QPointF>
-
+#include <core/point.h>
 #include <vector>
 
 namespace Control
@@ -20,8 +18,8 @@ public:
 
 	void addPoint(Core::Point *point);
 	void selectPoint(Core::Point *point);
-	void selectNearestPoint(const QPointF& pos, float tolerance);
-	void moveSelectedPoint(const QPointF& delta);
+	void selectNearestPoint(const QPointF &pos, float tolerance);
+	void moveSelectedPoint(const QPointF &delta);
 };
 
 };

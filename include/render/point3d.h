@@ -20,15 +20,14 @@ private:
 
 	const QVector3D m_yaxis;
 
-	void updatePosition(const QPointF& posPlane, const QPointF& posY);
+	void updatePosition(const QPointF &posPlane, const QPointF &posY);
 
 public:
-	Point3d(Plane *plane, Plane *planey, Core::Point *point,
-			Core::Point *pointy, const QVector3D& yaxis);
+	Point3d(Plane *plane, Plane *planey, Core::Point *point, Core::Point *pointy, const QVector3D &yaxis);
 
 public Q_SLOTS:
-	void positionPlaneUpdate(const QPointF& pos);
-	void positionYUpdate(const QPointF& pos);
+	void positionPlaneUpdate(const QPointF &pos);
+	void positionYUpdate(const QPointF &pos);
 };
 
 };

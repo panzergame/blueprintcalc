@@ -1,10 +1,8 @@
 #pragma once
 
 #include <QWidget>
-
-#include <memory>
-
 #include <core/constants.h>
+#include <memory>
 
 class QShortcut;
 

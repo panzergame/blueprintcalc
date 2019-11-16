@@ -1,11 +1,10 @@
 #pragma once
 
-#include <QGraphicsView>
 #include <QGraphicsScene>
-
-#include <core/constants.h>
-#include <core/alignment.h>
+#include <QGraphicsView>
 #include <control/blueprintview.h>
+#include <core/alignment.h>
+#include <core/constants.h>
 
 namespace View
 {
@@ -26,7 +25,7 @@ protected Q_SLOTS:
 	void keyPressEvent(QKeyEvent *event) override;
 
 public:
-	BlueprintView(const QString &imageFileName, Core::ImageType::Type viewType, QWidget *parent=nullptr);
+	BlueprintView(const QString &imageFileName, Core::ImageType::Type viewType, QWidget *parent = nullptr);
 	virtual ~BlueprintView();
 };
 

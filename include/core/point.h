@@ -1,7 +1,7 @@
 #pragma once
 
-#include <QPointF>
 #include <QObject>
+#include <QPointF>
 
 namespace Core
 {
@@ -14,13 +14,13 @@ private:
 	QPointF m_position;
 
 public:
-	Point(const QPointF& pos);
+	Point(const QPointF &pos);
 
-	void setPosition(const QPointF& pos);
-	const QPointF& position() const;
+	void setPosition(const QPointF &pos);
+	const QPointF &position() const;
 
 Q_SIGNALS:
-	void positionModified(const QPointF& pos);
+	void positionModified(const QPointF &pos);
 };
 
 };

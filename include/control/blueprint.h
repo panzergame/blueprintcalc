@@ -1,10 +1,9 @@
 #pragma once
 
 #include <QPointF>
-
-#include <singleton.h>
-#include <core/point.h>
 #include <core/constants.h>
+#include <core/point.h>
+#include <singleton.h>
 
 namespace Control
 {

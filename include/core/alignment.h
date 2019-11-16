@@ -1,12 +1,10 @@
 #pragma once
 
-
-#include <vector>
 #include <array>
-
-#include <singleton.h>
 #include <core/constants.h>
 #include <core/intersection.h>
+#include <singleton.h>
+#include <vector>
 
 namespace Core
 {

@@ -7,7 +7,6 @@ namespace View
 
 class Info : public QWidget
 {
-	
 };
 
 };

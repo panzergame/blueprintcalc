@@ -14,13 +14,13 @@ class Point2d : public Point
 private:
 	Plane *m_plane;
 
-	void updatePosition(const QPointF& pos);
+	void updatePosition(const QPointF &pos);
 
 public:
 	Point2d(Plane *plane, Core::Point *point);
 
 public Q_SLOTS:
-	void positionUpdate(const QPointF& pos);
+	void positionUpdate(const QPointF &pos);
 };
 
 };
