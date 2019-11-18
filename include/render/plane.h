@@ -2,11 +2,10 @@
 
 #include <Qt3DCore/QEntity>
 #include <Qt3DCore/QTransform>
-#include <core/point.h>
 #include <core/blueprintview.h>
-
-#include <vector>
+#include <core/point.h>
 #include <memory>
+#include <vector>
 
 namespace Render
 {
@@ -21,7 +20,7 @@ private:
 	Qt3DCore::QTransform *m_transform;
 
 	/// Tracked 2d points in plane
-	std::vector<std::unique_ptr<Point2d> > m_points;
+	std::vector<std::unique_ptr<Point2d>> m_points;
 
 public:
 	Plane(const QString &imageName, Core::BlueprintView *view, Qt3DCore::QEntity *root);
@@ -30,7 +29,7 @@ public:
 
 public Q_SLOTS:
 	void addPoint(Core::Point *point);
-	void updateTransform(const QMatrix4x4& transform);
+	void updateTransform(const QMatrix4x4 &transform);
 };
 
 };

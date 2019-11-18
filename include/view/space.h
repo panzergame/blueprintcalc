@@ -2,10 +2,8 @@
 
 #include <QWidget>
 #include <Qt3DExtras/Qt3DWindow>
-
-#include <render/scene.h>
-
 #include <memory>
+#include <render/scene.h>
 
 namespace View
 {

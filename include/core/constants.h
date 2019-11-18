@@ -19,8 +19,6 @@ namespace Core
 namespace ImageType
 {
 
-	constexpr std::array<Type, MAX> ALL = {TOP, FRONT, BACK, SIDE};
-
 enum Type
 {
 	TOP = 0,
@@ -31,6 +29,8 @@ enum Type
 	NONE
 };
 
+constexpr std::array<Type, MAX> ALL = {TOP, FRONT, BACK, SIDE};
+
 constexpr std::array<char[20], MAX> NAMES = {"TOP", "FRONT", "BACK", "SIDE"};
 
 };
@@ -39,7 +39,7 @@ static const std::array<QQuaternion, Core::ImageType::MAX> ImageTransforms = {
 	QQuaternion::fromAxisAndAngle(QVector3D(1.0f, 0.0f, 0.0f), -90.0f), // TOP
 	QQuaternion::fromAxisAndAngle(QVector3D(0.0f, 0.0f, 1.0f), 90.0f),  // FRONT
 	QQuaternion::fromAxisAndAngle(QVector3D(0.0f, 0.0f, 1.0f), -90.0f), // BACK
-	QQuaternion::fromAxisAndAngle(QVector3D(0.0f, 0.0f, 1.0f), 0.0f)    // SIDE
+	QQuaternion::fromAxisAndAngle(QVector3D(0.0f, 0.0f, 1.0f), 0.0f)	// SIDE
 };
 
 namespace IntersectionType
@@ -81,11 +81,12 @@ inline Type Convert(ImageType::Type typeA, ImageType::Type typeB)
 
 namespace LockAxisType
 {
-	enum Type {
-		LOCK = 0,
-		UNLOCK,
-		MAX
-	};
+enum Type
+{
+	LOCK = 0,
+	UNLOCK,
+	MAX
+};
 };
 
 // TODO template <> Core::Array2D | .x .y [i]
