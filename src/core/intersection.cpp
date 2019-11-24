@@ -49,7 +49,7 @@ Intersection::Transform Intersection::alignmentTransform() const
 	const float s = (2 * c1 * c3 - c4 * c5) / d;
 	const float t = -(c3 * c4 - 2 * c2 * c5) / d;
 
-	qInfo() << s << t;
+	qInfo() << "scaling :" << s << "transform :" << t;
 
 	Transform transform{t, s};
 
@@ -63,6 +63,8 @@ std::array<QVector3D, 2> Intersection::viewWeightedDirection() const
 		m_directions[0] * m_views[0]->freedomFactors(),
 		m_directions[1] * m_views[1]->freedomFactors()
 	};
+
+	qInfo() << directions[0] << directions[1];
 
 	// Make the sum of each axis equal to 1 (or 0).
 	for (unsigned short ai = 0; ai < 3; ++ai) {
@@ -79,8 +81,15 @@ std::array<QVector3D, 2> Intersection::viewWeightedDirection() const
 	return directions;
 }
 
-void Intersection::applyPlaneTransform(float weight, const QVector3D& direction, const Transform& transform)
+void Intersection::applyPlaneTransform(const QVector3D &weightedDirection, float translation, float scale)
 {
+	qInfo() << "apply transform, direction :" << weightedDirection;
+
+	// Scale blending with default scale 1 : (scale + 1) / 2
+	const QVector3D wScale = (scale + 1.0f) * weightedDirection / 2.0f;
+	const QVector3D wTranslation = QVector3D(translation, translation, translation) * weightedDirection;
+
+	qInfo() << "weighted scale :" << wScale << "weighted translation :" << wTranslation;
 }
 
 void Intersection::addPair(const Pair& pair)
@@ -98,12 +107,15 @@ void Intersection::align()
 		return;
 	}*/
 
-	const std::array<QVector3D, 2> weights = viewWeightedDirection();
+	// Computes view directions including weight.
+	const std::array<QVector3D, 2> weightedDirections = viewWeightedDirection();
+	// Computes transformation.
+	const Transform transform = alignmentTransform();
 
-	/* TODO
-	 * calculer les facteurs d'influence sum() = 1
-	 * appliquer pour chaque vue selon sa direction dans la vue (m_directions).
-	 */
+	// Apply transform with direction and weight.
+	applyPlaneTransform(weightedDirections[0], transform.translation, transform.scale);
+	// Opposed transform.
+	applyPlaneTransform(weightedDirections[1], -transform.translation, 1.0f / transform.scale);
 }
 
 };

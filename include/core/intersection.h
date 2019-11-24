@@ -37,7 +37,7 @@ private:
 
 	Transform alignmentTransform() const;
 	std::array<QVector3D, 2> viewWeightedDirection() const;
-	void applyPlaneTransform(float weight, const QVector3D &direction, const Transform &transform);
+	void applyPlaneTransform(const QVector3D &weightedDirection, float translation, float scale);
 
 public:
 	explicit Intersection(const std::array<QVector3D, 2> &directions, const std::array<BlueprintView *, 2> &views);

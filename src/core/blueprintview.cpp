@@ -6,7 +6,7 @@ namespace Core
 
 BlueprintView::BlueprintView(const QQuaternion &basicRotation)
 	:m_basicTransform(basicRotation.toRotationMatrix()),
-	m_axisFreedom({LockAxisType::LOCK, LockAxisType::LOCK})
+	m_axisFreedom({LockAxisType::UNLOCK, LockAxisType::UNLOCK})
 {
 }
 
