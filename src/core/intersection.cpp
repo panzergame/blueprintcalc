@@ -90,6 +90,8 @@ void Intersection::applyPlaneTransform(const QVector3D &weightedDirection, float
 	const QVector3D wTranslation = QVector3D(translation, translation, translation) * weightedDirection;
 
 	qInfo() << "weighted scale :" << wScale << "weighted translation :" << wTranslation;
+
+	
 }
 
 void Intersection::addPair(const Pair& pair)
@@ -103,9 +105,9 @@ void Intersection::align()
 {
 	qInfo() << "align";
 
-	/*if (m_pairs.empty()) {
+	if (m_pairs.empty()) {
 		return;
-	}*/
+	}
 
 	// Computes view directions including weight.
 	const std::array<QVector3D, 2> weightedDirections = viewWeightedDirection();

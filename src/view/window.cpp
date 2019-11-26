@@ -5,6 +5,7 @@
 #include <view/space.h>
 #include <view/blueprintview.h>
 #include <view/window.h>
+#include <view/info.h>
 
 namespace View
 {
@@ -16,24 +17,20 @@ void Window::shortcutAlignEvent()
 
 void Window::setupUi(Space *space, Info *info, BlueprintView *views[Core::ImageType::MAX])
 {
-	QGridLayout *layout = new QGridLayout();
-// 	QHBoxLayout *layout = new QHBoxLayout();
+	QVBoxLayout *layout = new QVBoxLayout();
+	QHBoxLayout *row1 = new QHBoxLayout();
+	QHBoxLayout *row2 = new QHBoxLayout();
 
-	layout->addWidget(views[Core::ImageType::FRONT], 0, 0);
-	layout->addWidget(views[Core::ImageType::BACK], 0, 3);
-	layout->addWidget(views[Core::ImageType::SIDE], 0, 1, 1, 2);
-	layout->addWidget(views[Core::ImageType::TOP], 1, 0, 1, 2);
-	layout->addWidget(space, 1, 2, 1, 2);
+	layout->addLayout(row1, 1);
+	layout->addLayout(row2, 1);
 
-	layout->setColumnStretch(0, 1);
-	layout->setColumnStretch(1, 1);
-	layout->setColumnStretch(2, 1);
-	layout->setColumnStretch(3, 1);
+	row1->addWidget(views[Core::ImageType::FRONT], 1);
+	row1->addWidget(views[Core::ImageType::SIDE], 2);
+	row1->addWidget(views[Core::ImageType::BACK], 1);
 
-	layout->setRowStretch(0, 1);
-	layout->setRowStretch(1, 1);
-
-// 	layout->addWidget(view3D);
+	row2->addWidget(info, 0);
+	row2->addWidget(views[Core::ImageType::TOP], 1);
+	row2->addWidget(space, 1);
 
 	setLayout(layout);
 
