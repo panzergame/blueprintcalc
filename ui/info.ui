@@ -21,13 +21,13 @@
     <bool>true</bool>
    </property>
    <attribute name="title">
-    <string>Page</string>
+    <string>Settings</string>
    </attribute>
    <layout class="QVBoxLayout" name="lockTabLayout"/>
   </widget>
   <widget class="QWidget" name="alignmentTab">
    <attribute name="title">
-    <string>Page</string>
+    <string>Transform</string>
    </attribute>
    <layout class="QVBoxLayout" name="alignmentTabLayout"/>
   </widget>

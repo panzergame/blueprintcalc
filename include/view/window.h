@@ -1,8 +1,10 @@
 #pragma once
 
-#include <QWidget>
+#include <QMainWindow>
 #include <core/constants.h>
 #include <memory>
+
+#include <ui_window.h>
 
 class QShortcut;
 
@@ -13,7 +15,7 @@ class Space;
 class Info;
 class BlueprintView;
 
-class Window : public QWidget
+class Window : public QMainWindow, private Ui::MainWindow
 {
 	Q_OBJECT
 private:
