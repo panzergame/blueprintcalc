@@ -31,7 +31,7 @@ enum Type
 
 constexpr std::array<Type, MAX> ALL = {TOP, FRONT, BACK, SIDE};
 
-constexpr std::array<char[20], MAX> NAMES = {"TOP", "FRONT", "BACK", "SIDE"};
+constexpr std::array<char[20], MAX> NAMES = {"Top", "Front", "Back", "Side"};
 
 };
 
@@ -78,6 +78,17 @@ inline Type Convert(ImageType::Type typeA, ImageType::Type typeB)
 }
 
 };
+
+namespace PlaneAxis
+{
+	enum Type {
+		X = 0,
+		Z,
+		MAX
+	};
+
+	constexpr std::array<Type, MAX> ALL = {X, Z};
+}
 
 namespace LockAxisType
 {

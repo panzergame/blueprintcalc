@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.1.0)
+cmake_minimum_required(VERSION 3.14.0)
 
 project(blueprintcalc)
 
@@ -9,9 +9,8 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -g -O0")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -g -O0")
 
-if(CMAKE_VERSION VERSION_LESS "3.7.0")
-    set(CMAKE_INCLUDE_CURRENT_DIR ON)
-endif()
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_AUTOUIC_SEARCH_PATHS ui)
 
 find_package(Qt5 COMPONENTS REQUIRED 
 	Widgets
@@ -39,6 +38,7 @@ add_executable(blueprintcalc
     src/render/point.cpp
     src/render/scene.cpp
     src/view/blueprintview.cpp
+    src/view/blueprintviewlock.cpp
     src/view/info.cpp
     src/view/space.cpp
     src/view/window.cpp
@@ -59,9 +59,12 @@ add_executable(blueprintcalc
     include/render/scene.h
     include/singleton.h
     include/view/blueprintview.h
+    include/view/blueprintviewlock.h
     include/view/info.h
     include/view/space.h
     include/view/window.h
+
+    ui/info.ui
 )
 
 target_include_directories(blueprintcalc PRIVATE include)

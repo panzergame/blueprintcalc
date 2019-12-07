@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Info</class>
+ <widget class="QTabWidget" name="Info">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>376</width>
+    <height>227</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>TabWidget</string>
+  </property>
+  <property name="currentIndex">
+   <number>1</number>
+  </property>
+  <widget class="QWidget" name="lockTab">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <attribute name="title">
+    <string>Page</string>
+   </attribute>
+   <layout class="QVBoxLayout" name="lockTabLayout"/>
+  </widget>
+  <widget class="QWidget" name="alignmentTab">
+   <attribute name="title">
+    <string>Page</string>
+   </attribute>
+   <layout class="QVBoxLayout" name="alignmentTabLayout"/>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

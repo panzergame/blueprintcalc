@@ -21,13 +21,16 @@ class BlueprintView : public QObject
 	/// 2d points of this plane.
 	std::vector<std::unique_ptr<Point>> m_points;
 
-	std::array<LockAxisType::Type, 2> m_axisFreedom;
+	std::array<LockAxisType::Type, PlaneAxis::MAX> m_axisFreedom;
 
 public:
 	explicit BlueprintView(const QQuaternion &basicRotation);
 
 	const QMatrix4x4 &basicTransform() const;
 	QMatrix4x4 transform() const;
+
+	void setAxisFreedom(PlaneAxis::Type axis, LockAxisType::Type freedom);
+	LockAxisType::Type axisFreedom(PlaneAxis::Type axis) const;
 
 	/** 3D freedom factors of this view.
 	 * 1 for free on this axis otherwise 0

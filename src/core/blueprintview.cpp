@@ -20,6 +20,16 @@ QMatrix4x4 BlueprintView::transform() const
 	return basicTransform() * m_alignmentTransform;
 }
 
+void BlueprintView::setAxisFreedom(PlaneAxis::Type axis, LockAxisType::Type freedom)
+{
+	m_axisFreedom[axis] = freedom;
+}
+
+LockAxisType::Type BlueprintView::axisFreedom(PlaneAxis::Type axis) const
+{
+	return m_axisFreedom[axis];
+}
+
 QVector3D BlueprintView::freedomFactors() const
 {
 	// Factor of every axis locking type.
@@ -28,7 +38,7 @@ QVector3D BlueprintView::freedomFactors() const
 		1.0f // UNLOCK
 	};
 
-	return QVector3D(lockFactors[m_axisFreedom[0]], 0.0f, lockFactors[m_axisFreedom[1]]);
+	return QVector3D(lockFactors[m_axisFreedom[PlaneAxis::X]], 0.0f, lockFactors[m_axisFreedom[PlaneAxis::Z]]);
 }
 
 void BlueprintView::addPoint(Core::Point *point)

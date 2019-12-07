@@ -1,19 +1,25 @@
 #include <view/info.h>
 
 #include <QBoxLayout>
-#include <QPushButton>
+#include <QTabWidget>
+
+#include <core/blueprint.h>
+#include <core/constants.h>
+#include <view/blueprintviewlock.h>
 
 namespace View
 {
 
 Info::Info()
 {
-	QHBoxLayout *layout = new QHBoxLayout();
+	setupUi(this);
 
-	QPushButton *button = new QPushButton("X");
-	layout->addWidget(button);
+	for (Core::ImageType::Type imageType : Core::ImageType::ALL) {
+		BlueprintViewLock *lock = new BlueprintViewLock(Core::Blueprint::singleton->getBlueprintView(imageType),
+				Core::ImageType::NAMES[imageType]);
 
-	setLayout(layout);
+		lockTabLayout->addWidget(lock);
+	}
 }
 
 }
